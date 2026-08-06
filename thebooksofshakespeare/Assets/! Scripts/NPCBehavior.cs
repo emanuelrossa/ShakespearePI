@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-// Adicionamos o NavMeshAgent como requisito
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Animator))]
@@ -11,13 +10,12 @@ public class NPCBehavior : MonoBehaviour
     [Header("Patrulha Aleatória")]
     public float patrolRadius = 8f;
     public float patrolSpeed = 2f;
-    public float timeBetweenPoints = 2.0f; // Tempo de espera ao chegar no ponto
+    public float timeBetweenPoints = 2.0f;
 
     [Header("Interação")]
     public float detectionRange = 12f;
     [Range(0f, 180f)]
     public float detectionAngle = 60f;
-    public float chaseSpeed = 4.5f;
 
     [Header("Passos")]
     public AudioClip footstepClip;
@@ -106,7 +104,6 @@ public class NPCBehavior : MonoBehaviour
 
     void ChaseLogic()
     {
-        agent.speed = chaseSpeed;
         agent.SetDestination(player.position);
     }
 
@@ -129,8 +126,8 @@ public class NPCBehavior : MonoBehaviour
         float currentSpeed = agent.velocity.magnitude;
         bool isMoving = currentSpeed > 0.1f;
 
-        anim.SetBool("IsRunning", isMoving);
-        anim.SetBool("isParado", !isMoving);
+        anim.SetBool("IsWalking", isMoving);
+        anim.SetBool("IsIdle", !isMoving);
     }
 
     void HandleFootsteps()
@@ -172,18 +169,4 @@ public class NPCBehavior : MonoBehaviour
         return false;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (!drawDebug) return;
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(startPos, patrolRadius);
-
-        if (agent != null && agent.hasPath)
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(agent.destination, 0.5f);
-        }
-    }
 }
