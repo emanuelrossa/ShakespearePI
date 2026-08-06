@@ -8,28 +8,26 @@ using UnityEngine.AI;
 public class NPCBehavior : MonoBehaviour
 {
     [Header("Patrulha Aleatória")]
-    public float patrolRadius = 8f;
-    public float patrolSpeed = 2f;
-    public float timeBetweenPoints = 2.0f;
+    [SerializeField] private float patrolRadius = 8f;
+    [SerializeField] private float patrolSpeed = 2f;
+    [SerializeField] private float timeBetweenPoints = 2.0f;
 
     [Header("Interação")]
-    public float detectionRange = 12f;
-    [Range(0f, 180f)]
-    public float detectionAngle = 60f;
+    [SerializeField] private float detectionRange = 12f;
+    [SerializeField, Range(0f, 180f)] private float detectionAngle = 60f;
 
     [Header("Passos")]
-    public AudioSource footstepClip;
-    public float baseStepInterval = 0.45f;
-    public float minSpeedForSteps = 0.1f;
+    [SerializeField] private AudioSource footstepClip;
+    [SerializeField] private float baseStepInterval = 0.45f;
+    [SerializeField] private float minSpeedForSteps = 0.1f;
 
     [Header("Referências")]
-    public Transform player;
-    public Transform eyes;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform eyes;
 
     [Header("Debug")]
-    public bool drawDebug = false;
+    [SerializeField] private bool drawDebug = false;
 
-    // Componentes
     NavMeshAgent agent;
     AudioSource audioSource;
     Animator anim;
@@ -46,18 +44,13 @@ public class NPCBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
-
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 1f;
-
         startPos = transform.position;
-
-        // Configurações iniciais do Agent
         agent.speed = patrolSpeed;
         agent.acceleration = 8f;
-        agent.angularSpeed = 120f; // Velocidade de rotação
+        agent.angularSpeed = 120f;
         agent.stoppingDistance = 0.5f;
-
         PickNewPatrolPoint();
     }
 
@@ -88,7 +81,6 @@ public class NPCBehavior : MonoBehaviour
     {
         agent.speed = patrolSpeed;
 
-        // Se o agente chegar perto do destino
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             waitTimer += Time.deltaTime;
@@ -111,7 +103,6 @@ public class NPCBehavior : MonoBehaviour
         randomDirection += startPos;
 
         NavMeshHit hit;
-        // Tenta encontrar o ponto válido mais próximo no NavMesh
         if (NavMesh.SamplePosition(randomDirection, out hit, patrolRadius, 1))
         {
             agent.SetDestination(hit.position);
@@ -120,7 +111,6 @@ public class NPCBehavior : MonoBehaviour
 
     void UpdateAnimationParameters()
     {
-        // Usamos a velocidade real do NavMeshAgent para animar
         float currentSpeed = agent.velocity.magnitude;
         bool isMoving = currentSpeed > 0.1f;
 
@@ -137,13 +127,20 @@ public class NPCBehavior : MonoBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
-                footstepClip.Play();
+                if (!footstepClip.isPlaying)
+                {
+                    footstepClip.Play();
+                }
                 stepTimer = baseStepInterval / (speed * 0.5f + 0.5f);
             }
         }
         else
         {
             stepTimer = 0f;
+            if (footstepClip.isPlaying)
+            {
+                footstepClip.Stop();
+            }
         }
     }
 
