@@ -18,7 +18,7 @@ public class NPCBehavior : MonoBehaviour
     public float detectionAngle = 60f;
 
     [Header("Passos")]
-    public AudioClip footstepClip;
+    public AudioSource footstepClip;
     public float baseStepInterval = 0.45f;
     public float minSpeedForSteps = 0.1f;
 
@@ -59,8 +59,6 @@ public class NPCBehavior : MonoBehaviour
         agent.stoppingDistance = 0.5f;
 
         PickNewPatrolPoint();
-
-        if (player == null) Debug.LogWarning("NPCBehavior: Arraste o Player!");
     }
 
     void Update()
@@ -139,7 +137,7 @@ public class NPCBehavior : MonoBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0)
             {
-                audioSource.PlayOneShot(footstepClip);
+                footstepClip.Play();
                 stepTimer = baseStepInterval / (speed * 0.5f + 0.5f);
             }
         }
