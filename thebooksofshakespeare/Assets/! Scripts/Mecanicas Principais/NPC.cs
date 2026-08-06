@@ -13,18 +13,56 @@ public class NPC : MonoBehaviour
 
     public string id;
 
+    public string npcName;
+
+    [TextArea]
+    public string[] dialogue;
+
+    [Header("Missão")]
+    public bool givesQuest;
+    public QuestManager.QuestType questType;
+    public string target;
+    public string requiredItem;
+
+    private float interactCooldown;
+
     public void Interact()
     {
-        // Abre diálogo apenas para NPCs e entregas
-        if (type == Type.NPC || type == Type.Delivery)
+        if (Time.time < interactCooldown)
+            return;
+
+        if (DialogueManager.Instance.IsTalking)
+            return;
+
+        if (type == Type.Item)
         {
-            Debug.Log("Conversando...");
-            // DialogueManager.Instance.StartDialogue(...);
+            QuestManager.Instance.Interact("Item", id);
+            Destroy(gameObject);
+            return;
         }
+
+        DialogueManager.Instance.StartDialogue(
+            npcName,
+            dialogue,
+            this
+        );
+    }
+
+    public void FinishInteraction()
+    {
+        interactCooldown = Time.time + 0.3f;
 
         QuestManager.Instance.Interact(type.ToString(), id);
 
-        if (type == Type.Item)
-            Destroy(gameObject);
+        if (givesQuest)
+        {
+            QuestManager.Instance.StartQuest(
+                questType,
+                target,
+                requiredItem
+            );
+
+            givesQuest = false;
+        }
     }
 }
