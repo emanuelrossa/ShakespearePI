@@ -11,7 +11,7 @@ public class ChairInteraction : MonoBehaviour
     private GameObject player;
     private HeadBob headBobScript;
 
-    private PlayerMovement playerMoviment;
+    private PlayerMoviment playerMoviment;
     private bool sentado = false;
 
     void OnTriggerEnter(Collider collision)
@@ -20,7 +20,7 @@ public class ChairInteraction : MonoBehaviour
         {
             perto = true;
             player = collision.gameObject;
-            playerMoviment = player.GetComponent<PlayerMovement>();
+            playerMoviment = player.GetComponent<PlayerMoviment>();
             headBobScript = player.GetComponentInChildren<HeadBob>();
         }
     }

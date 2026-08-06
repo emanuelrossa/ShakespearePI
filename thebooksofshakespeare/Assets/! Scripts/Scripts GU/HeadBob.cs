@@ -26,14 +26,6 @@ public partial class HeadBob : MonoBehaviour
 
     void Update()
     {
-        // --- NOVA VERIFICAÇÃO ---
-        // Se o diálogo estiver ativo, forçamos a câmera a voltar para a posição original e paramos o código aqui
-        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive)
-        {
-            ResetarPosicao();
-            return; // Sai do Update e não executa o balanço abaixo
-        }
-
         // Detecta se o player está se movendo significativamente
         float moveMagnitude = new Vector3(playerController.velocity.x, 0, playerController.velocity.z).magnitude;
 
