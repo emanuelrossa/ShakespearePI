@@ -26,7 +26,23 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+
+        if (player == null)
+        {
+            player = FindFirstObjectByType<FirstPersonController>();
+        }
+
+        if (player == null)
+        {
+            Debug.LogError("DialogueManager: não encontrou FirstPersonController na cena!");
+        }
     }
 
     public void StartDialogue(string npcName, string[] dialogue, NPC npc)
@@ -57,7 +73,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = lines[0];
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
 
         StartCoroutine(InputDelay());
     }
