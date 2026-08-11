@@ -9,19 +9,24 @@ public class NPC : MonoBehaviour
         Delivery
     }
 
+    [Header("Identificação")]
     public Type type;
 
     public string id;
 
     public string npcName;
 
+    [Header("Diálogo")]
     [TextArea]
     public string[] dialogue;
 
     [Header("Missão")]
     public bool givesQuest;
+
     public QuestManager.QuestType questType;
+
     public string target;
+
     public string requiredItem;
 
     private float interactCooldown;
@@ -31,15 +36,37 @@ public class NPC : MonoBehaviour
         if (Time.time < interactCooldown)
             return;
 
+        if (DialogueManager.Instance == null)
+            return;
+
         if (DialogueManager.Instance.IsTalking)
             return;
 
+
+        // =========================
+        // ITEM
+        // =========================
+
         if (type == Type.Item)
         {
-            QuestManager.Instance.Interact("Item", id);
+            QuestManager.Instance.AddItem(id);
+
+            QuestManager.Instance.Interact(
+                "Item",
+                id
+            );
+
+            interactCooldown = Time.time + 0.5f;
+
             Destroy(gameObject);
+
             return;
         }
+
+
+        // =========================
+        // NPC
+        // =========================
 
         DialogueManager.Instance.StartDialogue(
             npcName,
@@ -48,11 +75,24 @@ public class NPC : MonoBehaviour
         );
     }
 
+
     public void FinishInteraction()
     {
-        interactCooldown = Time.time + 0.3f;
+        interactCooldown = Time.time + 0.5f;
 
-        QuestManager.Instance.Interact(type.ToString(), id);
+
+        // Verifica se essa interação cumpre
+        // a missão atual.
+
+        QuestManager.Instance.Interact(
+            type.ToString(),
+            id
+        );
+
+
+        // =========================
+        // DAR NOVA MISSÃO
+        // =========================
 
         if (givesQuest)
         {

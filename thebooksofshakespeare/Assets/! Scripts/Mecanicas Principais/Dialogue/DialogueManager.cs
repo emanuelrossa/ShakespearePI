@@ -109,16 +109,13 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        player.canMove = true;
-        Debug.Log("Dialogue fechou | canMove = " + player.canMove);
-
-        if (player != null)
-            player.canMove = true;
-
         IsTalking = false;
         canAdvance = false;
 
         dialogueBox.SetActive(false);
+
+        if (player != null)
+            player.canMove = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -128,7 +125,5 @@ public class DialogueManager : MonoBehaviour
             currentNPC.FinishInteraction();
             currentNPC = null;
         }
-
-        Time.timeScale = 1f;
     }
 }
