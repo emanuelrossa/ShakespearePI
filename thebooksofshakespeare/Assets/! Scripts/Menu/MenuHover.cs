@@ -9,7 +9,6 @@ public class MenuHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private float speed = 10f;
 
     void Start()
-
     {
         originalScale = transform.localScale;
         targetScale = originalScale;

@@ -1,198 +1,129 @@
-using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using StarterAssets;
+using System.Collections;
 
-public class PauseSystm : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
-    [Header("Pause")]
-    public GameObject PausePanel;
+    public static DialogueManager Instance;
 
-    [Header("Animação")]
-    public float slideDuration = 0.3f;
-    public float slideDistance = 500f;
+    [Header("UI")]
+    public GameObject dialogueBox;
+    public TMP_Text dialogueText;
+    public TMP_Text nameText;
 
-    private RectTransform pauseRect;
+    [Header("Player")]
+    public FirstPersonController player;
 
-    private Vector2 shownPosition;
-    private Vector2 hiddenPosition;
+    private string[] lines;
+    private int currentLine;
+    private NPC currentNPC;
 
-    private bool isPaused = false;
+    private bool canAdvance;
 
-    private Coroutine animationCoroutine;
+    public bool IsTalking { get; private set; }
 
-
-    private void Start()
+    void Awake()
     {
-        if (PausePanel == null)
+        if (Instance != null && Instance != this)
         {
-            Debug.LogError(
-                "PauseSystm: PausePanel não foi configurado!"
-            );
-
+            Destroy(gameObject);
             return;
         }
 
-        pauseRect = PausePanel.GetComponent<RectTransform>();
+        Instance = this;
 
-        if (pauseRect == null)
+        if (player == null)
         {
-            Debug.LogError(
-                "PauseSystm: PausePanel precisa ser um objeto UI!"
-            );
-
-            return;
+            player = FindFirstObjectByType<FirstPersonController>();
         }
 
-        // Posição normal definida no Inspector
-        shownPosition = pauseRect.anchoredPosition;
-
-        // Começa escondido à direita
-        hiddenPosition =
-            shownPosition +
-            new Vector2(slideDistance, 0f);
-
-        pauseRect.anchoredPosition = hiddenPosition;
-
-        PausePanel.SetActive(false);
-
-        Time.timeScale = 1f;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (player == null)
+        {
+            Debug.LogError("DialogueManager: não encontrou FirstPersonController na cena!");
+        }
     }
 
-
-    private void Update()
+    public void StartDialogue(string npcName, string[] dialogue, NPC npc)
     {
-        if (Keyboard.current == null)
+
+        player.canMove = false;
+        Debug.Log("Dialogue abriu | canMove = " + player.canMove);
+
+        if (player != null)
+            player.canMove = false;
+
+        if (IsTalking)
             return;
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (dialogue == null || dialogue.Length == 0)
+            return;
+
+        currentNPC = npc;
+        lines = dialogue;
+        currentLine = 0;
+
+        IsTalking = true;
+        canAdvance = false;
+
+        dialogueBox.SetActive(true);
+
+        nameText.text = npcName;
+        dialogueText.text = lines[0];
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
+
+        StartCoroutine(InputDelay());
+    }
+
+    IEnumerator InputDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canAdvance = true;
+    }
+
+    void Update()
+    {
+        if (!IsTalking)
+            return;
+
+        if (!canAdvance)
+            return;
+
+        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (isPaused)
+            currentLine++;
+
+            if (currentLine >= lines.Length)
             {
-                ResumeGame();
+                EndDialogue();
             }
             else
             {
-                PauseGame();
+                dialogueText.text = lines[currentLine];
             }
         }
     }
 
-
-    public void PauseGame()
+    void EndDialogue()
     {
-        if (isPaused)
-            return;
+        IsTalking = false;
+        canAdvance = false;
 
-        isPaused = true;
+        dialogueBox.SetActive(false);
 
-        // Para o jogo
-        Time.timeScale = 0f;
-
-        // Mostra o cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (animationCoroutine != null)
-            StopCoroutine(animationCoroutine);
-
-        animationCoroutine =
-            StartCoroutine(SlideIn());
-    }
-
-
-    public void ResumeGame()
-    {
-        if (!isPaused)
-            return;
-
-        if (animationCoroutine != null)
-            StopCoroutine(animationCoroutine);
-
-        animationCoroutine =
-            StartCoroutine(SlideOut());
-    }
-
-
-    private IEnumerator SlideIn()
-    {
-        PausePanel.SetActive(true);
-
-        pauseRect.anchoredPosition =
-            hiddenPosition;
-
-        float time = 0f;
-
-        while (time < slideDuration)
-        {
-            time += Time.unscaledDeltaTime;
-
-            float t =
-                time / slideDuration;
-
-            // Ease Out
-            t =
-                1f - Mathf.Pow(1f - t, 3f);
-
-            pauseRect.anchoredPosition =
-                Vector2.Lerp(
-                    hiddenPosition,
-                    shownPosition,
-                    t
-                );
-
-            yield return null;
-        }
-
-        pauseRect.anchoredPosition =
-            shownPosition;
-
-        animationCoroutine = null;
-    }
-
-
-    private IEnumerator SlideOut()
-    {
-        float time = 0f;
-
-        Vector2 startPosition =
-            pauseRect.anchoredPosition;
-
-        while (time < slideDuration)
-        {
-            time += Time.unscaledDeltaTime;
-
-            float t =
-                time / slideDuration;
-
-            // Ease In
-            t = Mathf.Pow(t, 3f);
-
-            pauseRect.anchoredPosition =
-                Vector2.Lerp(
-                    startPosition,
-                    hiddenPosition,
-                    t
-                );
-
-            yield return null;
-        }
-
-        pauseRect.anchoredPosition =
-            hiddenPosition;
-
-        PausePanel.SetActive(false);
-
-        isPaused = false;
-
-        // Despausa depois da animação
-        Time.timeScale = 1f;
+        if (player != null)
+            player.canMove = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        animationCoroutine = null;
+        if (currentNPC != null)
+        {
+            currentNPC.FinishInteraction();
+            currentNPC = null;
+        }
     }
 }
