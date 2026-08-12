@@ -1,129 +1,198 @@
-using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using StarterAssets;
-using System.Collections;
 
-public class DialogueManager : MonoBehaviour
+public class PauseSystm : MonoBehaviour
 {
-    public static DialogueManager Instance;
+    [Header("Pause")]
+    public GameObject PausePanel;
 
-    [Header("UI")]
-    public GameObject dialogueBox;
-    public TMP_Text dialogueText;
-    public TMP_Text nameText;
+    [Header("Animação")]
+    public float slideDuration = 0.3f;
+    public float slideDistance = 500f;
 
-    [Header("Player")]
-    public FirstPersonController player;
+    private RectTransform pauseRect;
 
-    private string[] lines;
-    private int currentLine;
-    private NPC currentNPC;
+    private Vector2 shownPosition;
+    private Vector2 hiddenPosition;
 
-    private bool canAdvance;
+    private bool isPaused = false;
 
-    public bool IsTalking { get; private set; }
+    private Coroutine animationCoroutine;
 
-    void Awake()
+
+    private void Start()
     {
-        if (Instance != null && Instance != this)
+        if (PausePanel == null)
         {
-            Destroy(gameObject);
+            Debug.LogError(
+                "PauseSystm: PausePanel não foi configurado!"
+            );
+
             return;
         }
 
-        Instance = this;
+        pauseRect = PausePanel.GetComponent<RectTransform>();
 
-        if (player == null)
+        if (pauseRect == null)
         {
-            player = FindFirstObjectByType<FirstPersonController>();
+            Debug.LogError(
+                "PauseSystm: PausePanel precisa ser um objeto UI!"
+            );
+
+            return;
         }
 
-        if (player == null)
-        {
-            Debug.LogError("DialogueManager: não encontrou FirstPersonController na cena!");
-        }
-    }
+        // Posição normal definida no Inspector
+        shownPosition = pauseRect.anchoredPosition;
 
-    public void StartDialogue(string npcName, string[] dialogue, NPC npc)
-    {
+        // Começa escondido à direita
+        hiddenPosition =
+            shownPosition +
+            new Vector2(slideDistance, 0f);
 
-        player.canMove = false;
-        Debug.Log("Dialogue abriu | canMove = " + player.canMove);
+        pauseRect.anchoredPosition = hiddenPosition;
 
-        if (player != null)
-            player.canMove = false;
+        PausePanel.SetActive(false);
 
-        if (IsTalking)
-            return;
+        Time.timeScale = 1f;
 
-        if (dialogue == null || dialogue.Length == 0)
-            return;
-
-        currentNPC = npc;
-        lines = dialogue;
-        currentLine = 0;
-
-        IsTalking = true;
-        canAdvance = false;
-
-        dialogueBox.SetActive(true);
-
-        nameText.text = npcName;
-        dialogueText.text = lines[0];
-
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        StartCoroutine(InputDelay());
     }
 
-    IEnumerator InputDelay()
-    {
-        yield return new WaitForSeconds(0.2f);
-        canAdvance = true;
-    }
 
-    void Update()
+    private void Update()
     {
-        if (!IsTalking)
+        if (Keyboard.current == null)
             return;
 
-        if (!canAdvance)
-            return;
-
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            currentLine++;
-
-            if (currentLine >= lines.Length)
+            if (isPaused)
             {
-                EndDialogue();
+                ResumeGame();
             }
             else
             {
-                dialogueText.text = lines[currentLine];
+                PauseGame();
             }
         }
     }
 
-    void EndDialogue()
+
+    public void PauseGame()
     {
-        IsTalking = false;
-        canAdvance = false;
+        if (isPaused)
+            return;
 
-        dialogueBox.SetActive(false);
+        isPaused = true;
 
-        if (player != null)
-            player.canMove = true;
+        // Para o jogo
+        Time.timeScale = 0f;
+
+        // Mostra o cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (animationCoroutine != null)
+            StopCoroutine(animationCoroutine);
+
+        animationCoroutine =
+            StartCoroutine(SlideIn());
+    }
+
+
+    public void ResumeGame()
+    {
+        if (!isPaused)
+            return;
+
+        if (animationCoroutine != null)
+            StopCoroutine(animationCoroutine);
+
+        animationCoroutine =
+            StartCoroutine(SlideOut());
+    }
+
+
+    private IEnumerator SlideIn()
+    {
+        PausePanel.SetActive(true);
+
+        pauseRect.anchoredPosition =
+            hiddenPosition;
+
+        float time = 0f;
+
+        while (time < slideDuration)
+        {
+            time += Time.unscaledDeltaTime;
+
+            float t =
+                time / slideDuration;
+
+            // Ease Out
+            t =
+                1f - Mathf.Pow(1f - t, 3f);
+
+            pauseRect.anchoredPosition =
+                Vector2.Lerp(
+                    hiddenPosition,
+                    shownPosition,
+                    t
+                );
+
+            yield return null;
+        }
+
+        pauseRect.anchoredPosition =
+            shownPosition;
+
+        animationCoroutine = null;
+    }
+
+
+    private IEnumerator SlideOut()
+    {
+        float time = 0f;
+
+        Vector2 startPosition =
+            pauseRect.anchoredPosition;
+
+        while (time < slideDuration)
+        {
+            time += Time.unscaledDeltaTime;
+
+            float t =
+                time / slideDuration;
+
+            // Ease In
+            t = Mathf.Pow(t, 3f);
+
+            pauseRect.anchoredPosition =
+                Vector2.Lerp(
+                    startPosition,
+                    hiddenPosition,
+                    t
+                );
+
+            yield return null;
+        }
+
+        pauseRect.anchoredPosition =
+            hiddenPosition;
+
+        PausePanel.SetActive(false);
+
+        isPaused = false;
+
+        // Despausa depois da animação
+        Time.timeScale = 1f;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (currentNPC != null)
-        {
-            currentNPC.FinishInteraction();
-            currentNPC = null;
-        }
+        animationCoroutine = null;
     }
 }
