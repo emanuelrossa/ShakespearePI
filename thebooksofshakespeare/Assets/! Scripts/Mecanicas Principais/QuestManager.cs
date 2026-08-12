@@ -42,30 +42,17 @@ public class QuestManager : MonoBehaviour
 
     private HashSet<string> inventory = new HashSet<string>();
 
-    // ---------------------------------------------------------
-    // NOTIFICAÇÃO
-    // ---------------------------------------------------------
-
     private Coroutine notificationCoroutine;
 
     private RectTransform notificationRect;
     private Vector2 notificationHiddenPosition;
     private Vector2 notificationShownPosition;
 
-    // ---------------------------------------------------------
-    // QUEST BOX
-    // ---------------------------------------------------------
-
     private Coroutine questBoxCoroutine;
 
     private RectTransform questBoxRect;
     private Vector2 questBoxShownPosition;
     private Vector2 questBoxHiddenPosition;
-
-
-    // =========================================================
-    // UNITY
-    // =========================================================
 
     private void Awake()
     {
@@ -81,10 +68,6 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        // -----------------------------------------------------
-        // CONFIGURA QUEST BOX
-        // -----------------------------------------------------
-
         if (questBox != null)
         {
             questBoxRect =
@@ -92,27 +75,19 @@ public class QuestManager : MonoBehaviour
 
             if (questBoxRect != null)
             {
-                // Guarda a posição normal
                 questBoxShownPosition =
                     questBoxRect.anchoredPosition;
 
-                // Posição escondida à esquerda
                 questBoxHiddenPosition =
                     questBoxShownPosition +
                     new Vector2(-questBoxSlideDistance, 0f);
 
-                // Começa escondida
                 questBoxRect.anchoredPosition =
                     questBoxHiddenPosition;
             }
 
             questBox.SetActive(false);
         }
-
-
-        // -----------------------------------------------------
-        // CONFIGURA NOTIFICAÇÃO
-        // -----------------------------------------------------
 
         if (questNotification != null)
         {
@@ -121,27 +96,19 @@ public class QuestManager : MonoBehaviour
 
             if (notificationRect != null)
             {
-                // Guarda a posição normal
                 notificationShownPosition =
                     notificationRect.anchoredPosition;
 
-                // Posição escondida acima
                 notificationHiddenPosition =
                     notificationShownPosition +
                     new Vector2(0f, 150f);
 
-                // Começa escondida
                 notificationRect.anchoredPosition =
                     notificationHiddenPosition;
             }
 
             questNotification.SetActive(false);
         }
-
-
-        // -----------------------------------------------------
-        // CASO JÁ TENHA UMA QUEST ATIVA
-        // -----------------------------------------------------
 
         if (questActive)
         {
@@ -150,19 +117,12 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-
-    // =========================================================
-    // INICIAR MISSÃO
-    // =========================================================
-
     public void StartQuest(
         QuestType type,
         string target,
         string requiredItem = ""
     )
     {
-        // Não começa outra missão enquanto
-        // uma já estiver ativa.
         if (questActive)
             return;
 
@@ -173,31 +133,12 @@ public class QuestManager : MonoBehaviour
         currentTarget = target;
         currentRequiredItem = requiredItem;
 
-
-        Debug.Log(
-            "Missão iniciada: " +
-            type +
-            " | Alvo: " +
-            target +
-            " | Item: " +
-            requiredItem
-        );
-
-
-        // Atualiza o texto antes de mostrar
         UpdateQuestText();
 
-        // Caixa da missão desliza da esquerda
         ShowQuestBox();
 
-        // Notificação "NOVA MISSÃO" desliza de cima
         ShowQuestNotification();
     }
-
-
-    // =========================================================
-    // TEXTO DA MISSÃO
-    // =========================================================
 
     private string GetQuestText()
     {
@@ -244,11 +185,6 @@ public class QuestManager : MonoBehaviour
         questText.text = GetQuestText();
     }
 
-
-    // =========================================================
-    // QUEST BOX - ENTRADA
-    // =========================================================
-
     private void ShowQuestBox()
     {
         if (questBox == null)
@@ -292,7 +228,6 @@ public class QuestManager : MonoBehaviour
             float t =
                 time / questBoxSlideDuration;
 
-            // Ease Out
             t =
                 1f - Mathf.Pow(1f - t, 3f);
 
@@ -315,11 +250,6 @@ public class QuestManager : MonoBehaviour
 
         questBoxCoroutine = null;
     }
-
-
-    // =========================================================
-    // QUEST BOX - SAÍDA
-    // =========================================================
 
     private void HideQuestBox()
     {
@@ -365,7 +295,6 @@ public class QuestManager : MonoBehaviour
             float t =
                 time / questBoxSlideDuration;
 
-            // Ease In
             t =
                 Mathf.Pow(t, 3f);
 
@@ -391,10 +320,6 @@ public class QuestManager : MonoBehaviour
         questBoxCoroutine = null;
     }
 
-
-    // =========================================================
-    // NOTIFICAÇÃO - "NOVA MISSÃO"
-    // =========================================================
 
     private void ShowQuestNotification()
     {
@@ -431,11 +356,6 @@ public class QuestManager : MonoBehaviour
                 notificationHiddenPosition;
         }
 
-
-        // -----------------------------------------------------
-        // ENTRADA
-        // -----------------------------------------------------
-
         float time = 0f;
 
 
@@ -446,8 +366,6 @@ public class QuestManager : MonoBehaviour
             float t =
                 time / slideDuration;
 
-
-            // Ease Out
             t =
                 1f - Mathf.Pow(1f - t, 3f);
 
@@ -473,19 +391,9 @@ public class QuestManager : MonoBehaviour
                 notificationShownPosition;
         }
 
-
-        // -----------------------------------------------------
-        // FICA NA TELA
-        // -----------------------------------------------------
-
         yield return new WaitForSecondsRealtime(
             notificationTime
         );
-
-
-        // -----------------------------------------------------
-        // SAÍDA
-        // -----------------------------------------------------
 
         time = 0f;
 
@@ -497,8 +405,6 @@ public class QuestManager : MonoBehaviour
             float t =
                 time / slideDuration;
 
-
-            // Ease In
             t =
                 Mathf.Pow(t, 3f);
 
@@ -530,11 +436,6 @@ public class QuestManager : MonoBehaviour
         notificationCoroutine = null;
     }
 
-
-    // =========================================================
-    // INTERAÇÃO
-    // =========================================================
-
     public void Interact(string type, string id)
     {
         if (!questActive)
@@ -543,10 +444,7 @@ public class QuestManager : MonoBehaviour
 
         switch (currentQuestType)
         {
-            // -------------------------------------------------
-            // TALK
-            // -------------------------------------------------
-
+         
             case QuestType.Talk:
 
                 if (type == "NPC" &&
@@ -557,11 +455,6 @@ public class QuestManager : MonoBehaviour
 
                 break;
 
-
-            // -------------------------------------------------
-            // FIND
-            // -------------------------------------------------
-
             case QuestType.Find:
 
                 if (id == currentTarget)
@@ -570,11 +463,6 @@ public class QuestManager : MonoBehaviour
                 }
 
                 break;
-
-
-            // -------------------------------------------------
-            // COLLECT
-            // -------------------------------------------------
 
             case QuestType.Collect:
 
@@ -585,11 +473,6 @@ public class QuestManager : MonoBehaviour
                 }
 
                 break;
-
-
-            // -------------------------------------------------
-            // DELIVER
-            // -------------------------------------------------
 
             case QuestType.Deliver:
 
@@ -602,13 +485,6 @@ public class QuestManager : MonoBehaviour
 
                         CompleteQuest();
                     }
-                    else
-                    {
-                        Debug.Log(
-                            "Você precisa do item: " +
-                            currentRequiredItem
-                        );
-                    }
                 }
 
                 break;
@@ -618,11 +494,6 @@ public class QuestManager : MonoBehaviour
         UpdateQuestText();
     }
 
-
-    // =========================================================
-    // INVENTÁRIO
-    // =========================================================
-
     public void AddItem(string itemID)
     {
         if (string.IsNullOrEmpty(itemID))
@@ -630,13 +501,6 @@ public class QuestManager : MonoBehaviour
 
 
         inventory.Add(itemID);
-
-
-        Debug.Log(
-            "Item obtido: " +
-            itemID
-        );
-
 
         UpdateQuestText();
     }
@@ -657,37 +521,18 @@ public class QuestManager : MonoBehaviour
         if (inventory.Contains(itemID))
         {
             inventory.Remove(itemID);
-
-
-            Debug.Log(
-                "Item usado: " +
-                itemID
-            );
         }
     }
-
-
-    // =========================================================
-    // COMPLETAR MISSÃO
-    // =========================================================
-
     public void CompleteQuest()
     {
         if (!questActive)
             return;
-
-
-        Debug.Log("MISSÃO CONCLUÍDA!");
-
 
         questActive = false;
 
         currentTarget = "";
         currentRequiredItem = "";
 
-
-        // Agora a caixa sai deslizando
-        // em vez de simplesmente desaparecer.
         HideQuestBox();
     }
 }
