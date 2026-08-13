@@ -38,18 +38,12 @@ public class DialogueManager : MonoBehaviour
         {
             player = FindFirstObjectByType<FirstPersonController>();
         }
-
-        if (player == null)
-        {
-            Debug.LogError("DialogueManager: não encontrou FirstPersonController na cena!");
-        }
     }
 
     public void StartDialogue(string npcName, string[] dialogue, NPC npc)
     {
 
         player.canMove = false;
-        Debug.Log("Dialogue abriu | canMove = " + player.canMove);
 
         if (player != null)
             player.canMove = false;
