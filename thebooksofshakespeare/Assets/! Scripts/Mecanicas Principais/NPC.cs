@@ -29,7 +29,25 @@ public class NPC : MonoBehaviour
 
     public string requiredItem;
 
+    [Header("Outline")]
+    public Outline outline;
+
     private float interactCooldown;
+
+    private void Start()
+    {
+        if (outline == null)
+            outline = GetComponent<Outline>();
+
+        if (outline != null)
+            outline.enabled = false;
+    }
+
+    public void SetOutline(bool enabled)
+    {
+        if (outline != null)
+            outline.enabled = enabled;
+    }
 
     public void Interact()
     {
@@ -41,11 +59,6 @@ public class NPC : MonoBehaviour
 
         if (DialogueManager.Instance.IsTalking)
             return;
-
-
-        // =========================
-        // ITEM
-        // =========================
 
         if (type == Type.Item)
         {
@@ -63,11 +76,6 @@ public class NPC : MonoBehaviour
             return;
         }
 
-
-        // =========================
-        // NPC
-        // =========================
-
         DialogueManager.Instance.StartDialogue(
             npcName,
             dialogue,
@@ -75,24 +83,14 @@ public class NPC : MonoBehaviour
         );
     }
 
-
     public void FinishInteraction()
     {
         interactCooldown = Time.time + 0.5f;
-
-
-        // Verifica se essa interação cumpre
-        // a missão atual.
 
         QuestManager.Instance.Interact(
             type.ToString(),
             id
         );
-
-
-        // =========================
-        // DAR NOVA MISSÃO
-        // =========================
 
         if (givesQuest)
         {
