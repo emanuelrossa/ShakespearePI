@@ -12,9 +12,9 @@ public class NPC : MonoBehaviour
 
     public enum DestroyCondition
     {
-        Never,             
+        Never,
         AfterFirstDialogue,
-        AfterQuestDone     
+        AfterQuestDone
     }
 
     [Header("Identificação")]
@@ -28,18 +28,16 @@ public class NPC : MonoBehaviour
 
     [Header("NPC/Objeto a Deletar")]
     public DestroyCondition destroyWhen = DestroyCondition.Never;
-
     public GameObject targetToDestroy;
-
-    [Header("Troca de Cena (Opcional)")]
-    public bool changeSceneAfterQuestDone = false;
-    public string sceneToLoad;
 
     [Header("Missão")]
     public bool givesQuest;
     public QuestManager.QuestType questType;
     public string target;
     public string requiredItem;
+
+    [Header("Comportamento de Seguir")]
+    public NPCFollow followScript;
 
     [Header("Estado")]
     public bool isCompleted = false;
@@ -56,6 +54,9 @@ public class NPC : MonoBehaviour
 
         if (outline != null)
             outline.enabled = false;
+
+        if (followScript == null)
+            followScript = GetComponent<NPCFollow>();
     }
 
     public void SetOutline(bool enabled)
@@ -120,12 +121,19 @@ public class NPC : MonoBehaviour
             givesQuest = false;
         }
 
-        if (isCompleted && changeSceneAfterQuestDone && !string.IsNullOrEmpty(sceneToLoad))
+        if (followScript == null)
         {
-            SceneManager.LoadScene(sceneToLoad);
-            return;
+            followScript = GetComponent<NPCFollow>();
         }
 
+        if (followScript != null)
+        {
+            followScript.StartFollowing();
+        }
+    }
+
+    private void ExecuteDestroyLogic()
+    {
         if (destroyWhen == DestroyCondition.AfterFirstDialogue && !isCompleted)
         {
             DestroyTarget();
