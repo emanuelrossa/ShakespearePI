@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(AudioSource))]
 public class GuardPatrol : MonoBehaviour
 {
     [Header("Pontos de Patrulha")]
@@ -10,13 +11,17 @@ public class GuardPatrol : MonoBehaviour
     public float waitTimeAtPoint = 2f;
 
     [Header("Detecção do Player")]
-    public Transform player;            
-    public float viewDistance = 10f; 
-    public float viewAngle = 60f;       
-    public LayerMask obstacleMask;      
+    public Transform player;
+    public float viewDistance = 10f;
+    public float viewAngle = 60f;
+    public LayerMask obstacleMask;
+
+    [Header("Som de Passos")]
+    public AudioClip footstepClip;
+    private AudioSource audioSource;
 
     [Header("Derrota")]
-    public GameObject gameOverCanvas;  
+    public GameObject gameOverCanvas;
 
     private NavMeshAgent agent;
     private int currentWaypointIndex = 0;
@@ -27,6 +32,14 @@ public class GuardPatrol : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (footstepClip != null)
+        {
+            audioSource.clip = footstepClip;
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+        }
 
         if (waypoints.Length > 0)
         {
@@ -36,9 +49,14 @@ public class GuardPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (playerDetected) return;
+        if (playerDetected)
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+            return;
+        }
 
         CheckForPlayer();
+        HandleFootsteps();
 
         if (waypoints.Length == 0) return;
 
@@ -57,6 +75,20 @@ public class GuardPatrol : MonoBehaviour
                 isWaiting = false;
                 MoveToNextWaypoint();
             }
+        }
+    }
+
+    private void HandleFootsteps()
+    {
+        bool isMoving = agent.velocity.sqrMagnitude > 0.1f && !isWaiting;
+
+        if (isMoving && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if (!isMoving && audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
     }
 
@@ -82,7 +114,12 @@ public class GuardPatrol : MonoBehaviour
     private void GameOver()
     {
         playerDetected = true;
-        agent.isStopped = true; 
+        agent.isStopped = true;
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
 
         if (gameOverCanvas != null)
         {

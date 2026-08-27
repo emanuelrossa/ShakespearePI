@@ -5877,6 +5877,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  footstepClip: {fileID: 8300000, guid: 04fdee6f5fcfe0d4e826865aa132e4ea, type: 3}
   gameOverCanvas: {fileID: 1610413612}
 --- !u!1 &1767336552
 GameObject:
