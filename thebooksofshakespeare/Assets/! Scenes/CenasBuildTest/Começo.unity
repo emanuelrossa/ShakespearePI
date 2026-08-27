@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 1
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -11769,6 +11769,7 @@ MonoBehaviour:
   questType: 0
   target: 
   requiredItem: 
+  followScript: {fileID: 0}
   isCompleted: 0
   outline: {fileID: 912528359}
 --- !u!1001 &920869827
@@ -18452,6 +18453,7 @@ MonoBehaviour:
   questType: 2
   target: CAIXA
   requiredItem: CAIXA
+  followScript: {fileID: 0}
   isCompleted: 0
   outline: {fileID: 1404928247}
 --- !u!114 &1404928247
