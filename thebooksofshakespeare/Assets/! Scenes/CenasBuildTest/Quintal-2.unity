@@ -1722,6 +1722,8 @@ MonoBehaviour:
   questDoneDialogue: []
   destroyWhen: 0
   targetToDestroy: {fileID: 0}
+  changeSceneAfterQuestDone: 0
+  sceneToLoad: 
   givesQuest: 1
   questType: 1
   target: "Frei Louren\xE7o"
@@ -7959,6 +7961,14 @@ PrefabInstance:
     - target: {fileID: 6001340069648419653, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -131.853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_margin.z
+      value: -170.29872
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18373,7 +18383,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 95427698975c317459ef9b755e84280f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: d5ffcf6807f0c1141b1b2afd6c58707c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: 95427698975c317459ef9b755e84280f, type: 3}
@@ -18394,7 +18404,7 @@ PrefabInstance:
       addedObject: {fileID: 1918633632}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 95427698975c317459ef9b755e84280f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1918633631}
+      addedObject: {fileID: 1918633636}
   m_SourcePrefab: {fileID: 100100000, guid: 95427698975c317459ef9b755e84280f, type: 3}
 --- !u!1 &1918633626 stripped
 GameObject:
@@ -18438,44 +18448,25 @@ MonoBehaviour:
   id: "Frei Louren\xE7o"
   npcName: "Frei Louren\xE7o"
   dialogue:
-  - 
+  - "Frei Louren\xE7o: Voc\xEAs sabem que suas fam\xEDlias s\xE3o inimigas?"
+  - 'Romeu: Sabemos.'
+  - "Romeu: Mas n\xF3s nos amamos."
+  - "Frei Louren\xE7o: Talvez este casamento possa trazer paz entre as fam\xEDlias."
+  - "Frei Louren\xE7o: Eu realizei a cerim\xF4nia."
+  - 'Romeu: Obrigado.'
+  - "Shakespeare: (Espero que tudo d\xEA certo...)\r\n"
   questDoneDialogue: []
   destroyWhen: 0
   targetToDestroy: {fileID: 0}
-  givesQuest: 0
+  changeSceneAfterQuestDone: 1
+  sceneToLoad: NovoDia
+  givesQuest: 1
   questType: 0
-  target: 
+  target: "Frei Louren\xE7o"
   requiredItem: 
   followScript: {fileID: 0}
   isCompleted: 0
-  outline: {fileID: 0}
---- !u!114 &1918633631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918633626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733a7b8e375de4b499b92cdbb80b7bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GuardPatrol
-  waypoints:
-  - {fileID: 661774952}
-  - {fileID: 1432672534}
-  - {fileID: 1778063709}
-  - {fileID: 1931598206}
-  - {fileID: 1850967705}
-  waitTimeAtPoint: 2
-  player: {fileID: 0}
-  viewDistance: 10
-  viewAngle: 60
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  footstepClip: {fileID: 8300000, guid: 04fdee6f5fcfe0d4e826865aa132e4ea, type: 3}
-  gameOverCanvas: {fileID: 0}
+  outline: {fileID: 1918633636}
 --- !u!82 &1918633632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18488,17 +18479,17 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.112
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 5
+  MaxDistance: 6
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -18591,10 +18582,28 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1918633636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918633626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1920476160
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,13 +30,17 @@ public class NPC : MonoBehaviour
     public DestroyCondition destroyWhen = DestroyCondition.Never;
     public GameObject targetToDestroy;
 
+    [Header("Troca de Cena (Sem Fade)")]
+    public bool changeSceneAfterQuestDone = false;
+    public string sceneToLoad;
+
     [Header("Missão")]
     public bool givesQuest;
     public QuestManager.QuestType questType;
     public string target;
     public string requiredItem;
 
-    [Header("Comportamento de Seguir")]
+    [Header("Comportamento de Seguir (Opcional)")]
     public NPCFollow followScript;
 
     [Header("Estado")]
@@ -46,6 +50,7 @@ public class NPC : MonoBehaviour
     public Outline outline;
 
     private float interactCooldown;
+    private Transform playerTransform;
 
     private void Start()
     {
@@ -57,6 +62,12 @@ public class NPC : MonoBehaviour
 
         if (followScript == null)
             followScript = GetComponent<NPCFollow>();
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerTransform = playerObj.transform;
+        }
     }
 
     public void SetOutline(bool enabled)
@@ -82,6 +93,11 @@ public class NPC : MonoBehaviour
             return;
         }
 
+        if (followScript != null)
+            followScript.StopFollowing();
+
+        LookAtPlayer();
+
         if (!isCompleted && !string.IsNullOrEmpty(requiredItem))
         {
             if (QuestManager.Instance.HasItem(requiredItem))
@@ -105,31 +121,36 @@ public class NPC : MonoBehaviour
     {
         interactCooldown = Time.time + 0.5f;
 
-        QuestManager.Instance.Interact(
-            type.ToString(),
-            id
-        );
+        QuestManager.Instance.Interact(type.ToString(), id);
 
         if (givesQuest)
         {
-            QuestManager.Instance.StartQuest(
-                questType,
-                target,
-                requiredItem
-            );
-
+            QuestManager.Instance.StartQuest(questType, target, requiredItem);
             givesQuest = false;
         }
 
-        if (followScript == null)
+        if (isCompleted && changeSceneAfterQuestDone && !string.IsNullOrEmpty(sceneToLoad))
         {
-            followScript = GetComponent<NPCFollow>();
+            SceneManager.LoadScene(sceneToLoad);
+            return;
         }
 
         if (followScript != null)
         {
             followScript.StartFollowing();
         }
+
+        ExecuteDestroyLogic();
+    }
+
+    private void LookAtPlayer()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 lookPosition = playerTransform.position;
+        lookPosition.y = transform.position.y;
+
+        transform.LookAt(lookPosition);
     }
 
     private void ExecuteDestroyLogic()
