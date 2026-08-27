@@ -1710,6 +1710,7 @@ MonoBehaviour:
   - 'Shakespeare: Sim.'
   - 'Romeu: Quero me casar com a Julieta.'
   - "Romeu: Mas preciso encontrar Frei Louren\xE7o."
+  - FIM DA PLAYTEST
   questDoneDialogue: []
   destroyWhen: 0
   targetToDestroy: {fileID: 0}
