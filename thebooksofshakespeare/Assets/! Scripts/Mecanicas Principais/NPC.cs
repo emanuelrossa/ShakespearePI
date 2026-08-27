@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -9,14 +10,30 @@ public class NPC : MonoBehaviour
         Delivery
     }
 
+    public enum DestroyCondition
+    {
+        Never,             
+        AfterFirstDialogue,
+        AfterQuestDone     
+    }
+
     [Header("Identificação")]
     public Type type;
     public string id;
     public string npcName;
 
     [Header("Diálogos")]
-    [TextArea] public string[] dialogue;            // Diálogo inicial
-    [TextArea] public string[] questDoneDialogue;   // Diálogo APÓS entregar/completar
+    [TextArea] public string[] dialogue;
+    [TextArea] public string[] questDoneDialogue;
+
+    [Header("NPC/Objeto a Deletar")]
+    public DestroyCondition destroyWhen = DestroyCondition.Never;
+
+    public GameObject targetToDestroy;
+
+    [Header("Troca de Cena (Opcional)")]
+    public bool changeSceneAfterQuestDone = false;
+    public string sceneToLoad;
 
     [Header("Missão")]
     public bool givesQuest;
@@ -25,7 +42,7 @@ public class NPC : MonoBehaviour
     public string requiredItem;
 
     [Header("Estado")]
-    public bool isCompleted = false; // Fica true assim que a missão é finalizada
+    public bool isCompleted = false;
 
     [Header("Outline")]
     public Outline outline;
@@ -55,7 +72,6 @@ public class NPC : MonoBehaviour
         if (DialogueManager.Instance == null || DialogueManager.Instance.IsTalking)
             return;
 
-        // 1. Se for um item coletável no chão
         if (type == Type.Item)
         {
             QuestManager.Instance.AddItem(id);
@@ -65,16 +81,14 @@ public class NPC : MonoBehaviour
             return;
         }
 
-        // 2. Se o NPC for de entrega (Delivery) ou se a missão requerer um item que o player JÁ TEM
         if (!isCompleted && !string.IsNullOrEmpty(requiredItem))
         {
             if (QuestManager.Instance.HasItem(requiredItem))
             {
-                isCompleted = true; // Marca que o diálogo pós-item deve ser usado
+                isCompleted = true;
             }
         }
 
-        // 3. Escolhe qual array de falas usar no diálogo
         string[] currentDialogueLines = (isCompleted && questDoneDialogue != null && questDoneDialogue.Length > 0)
             ? questDoneDialogue
             : dialogue;
@@ -90,17 +104,10 @@ public class NPC : MonoBehaviour
     {
         interactCooldown = Time.time + 0.5f;
 
-        // Envia a interação para o QuestManager validar/completar a missão ativa
         QuestManager.Instance.Interact(
             type.ToString(),
             id
         );
-
-        // Se o NPC é o entregador de uma missão (ou o alvo), marcamos como completa
-        if (type == Type.Delivery || (type == Type.NPC && !givesQuest))
-        {
-            isCompleted = true;
-        }
 
         if (givesQuest)
         {
@@ -111,6 +118,33 @@ public class NPC : MonoBehaviour
             );
 
             givesQuest = false;
+        }
+
+        if (isCompleted && changeSceneAfterQuestDone && !string.IsNullOrEmpty(sceneToLoad))
+        {
+            SceneManager.LoadScene(sceneToLoad);
+            return;
+        }
+
+        if (destroyWhen == DestroyCondition.AfterFirstDialogue && !isCompleted)
+        {
+            DestroyTarget();
+        }
+        else if (destroyWhen == DestroyCondition.AfterQuestDone && isCompleted)
+        {
+            DestroyTarget();
+        }
+    }
+
+    private void DestroyTarget()
+    {
+        if (targetToDestroy != null)
+        {
+            Destroy(targetToDestroy);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
