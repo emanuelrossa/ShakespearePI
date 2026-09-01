@@ -18460,12 +18460,12 @@ MonoBehaviour:
   targetToDestroy: {fileID: 0}
   changeSceneAfterQuestDone: 1
   sceneToLoad: NovoDia
-  givesQuest: 1
+  givesQuest: 0
   questType: 0
   target: "Frei Louren\xE7o"
   requiredItem: 
   followScript: {fileID: 0}
-  isCompleted: 0
+  isCompleted: 1
   outline: {fileID: 1918633636}
 --- !u!82 &1918633632
 AudioSource:
