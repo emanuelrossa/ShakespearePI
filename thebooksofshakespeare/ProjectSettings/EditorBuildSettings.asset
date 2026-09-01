@@ -8,6 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/! Scenes/TitleScene.unity
     guid: 9b19a545961ee764f938abceefafbd77
+  - enabled: 1
+    path: "Assets/! Scenes/CenasBuildTest/Come\xE7o.unity"
+    guid: 2f77cedc15966bf42a13a74c345d73df
+  - enabled: 1
+    path: Assets/! Scenes/CenasBuildTest/Quintal-1.unity
+    guid: 2779a673c17728941a030f9fb414c087
+  - enabled: 1
+    path: "Assets/! Scenes/CenasBuildTest/Mans\xE3o.unity"
+    guid: eb69b9ece2e9cbb49b41be463bf84ee6
+  - enabled: 1
+    path: Assets/! Scenes/CenasBuildTest/Quintal-2.unity
+    guid: b0f1e6f2316077d449f0a71d72aba34f
+  - enabled: 1
+    path: Assets/! Scenes/CenasBuildTest/NovoDia.unity
+    guid: aed228176225885458e3057108924cc0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
