@@ -1788,9 +1788,13 @@ MonoBehaviour:
   questType: 1
   target: Teobaldo
   requiredItem: 
+  customQuestText: 
   followScript: {fileID: 65608210}
   isCompleted: 0
   outline: {fileID: 1681562906}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &65608210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9283,9 +9287,13 @@ MonoBehaviour:
   questType: 0
   target: 
   requiredItem: 
+  customQuestText: 
   followScript: {fileID: 0}
   isCompleted: 0
-  outline: {fileID: 0}
+  outline: {fileID: 700744834}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &700744831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18724,9 +18732,13 @@ MonoBehaviour:
   questType: 0
   target: 
   requiredItem: 
+  customQuestText: 
   followScript: {fileID: 0}
   isCompleted: 0
   outline: {fileID: 1404928247}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1404928247
 MonoBehaviour:
   m_ObjectHideFlags: 0
