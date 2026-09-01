@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,30 +15,31 @@ public class QuestManager : MonoBehaviour
         Deliver
     }
 
-    [Header("UI da missão atual")]
+    [Header("UI da missï¿½o atual")]
     public GameObject questBox;
     public TMP_Text questText;
 
-    [Header("Animação da missão")]
+    [Header("Animaï¿½ï¿½o da missï¿½o")]
     public float questBoxSlideDuration = 0.35f;
     public float questBoxSlideDistance = 300f;
 
-    [Header("Notificação de nova missão")]
+    [Header("Notificaï¿½ï¿½o de nova missï¿½o")]
     public GameObject questNotification;
     public TMP_Text questNotificationText;
 
-    [Tooltip("Quanto tempo a notificação fica parada na tela")]
+    [Tooltip("Quanto tempo a notificaï¿½ï¿½o fica parada na tela")]
     public float notificationTime = 3f;
 
-    [Tooltip("Velocidade da animação da notificação")]
+    [Tooltip("Velocidade da animaï¿½ï¿½o da notificaï¿½ï¿½o")]
     public float slideDuration = 0.35f;
 
-    [Header("Missão atual")]
+    [Header("Missï¿½o atual")]
     public bool questActive;
 
     public QuestType currentQuestType;
     public string currentTarget;
     public string currentRequiredItem;
+    private string currentCustomText = "";
 
     private HashSet<string> inventory = new HashSet<string>();
 
@@ -117,10 +118,12 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    // NOVO: parametro customText opcional
     public void StartQuest(
         QuestType type,
         string target,
-        string requiredItem = ""
+        string requiredItem = "",
+        string customText = ""
     )
     {
         if (questActive)
@@ -132,6 +135,7 @@ public class QuestManager : MonoBehaviour
         currentQuestType = type;
         currentTarget = target;
         currentRequiredItem = requiredItem;
+        currentCustomText = customText;
 
         UpdateQuestText();
 
@@ -142,6 +146,10 @@ public class QuestManager : MonoBehaviour
 
     private string GetQuestText()
     {
+        // NOVO: se tiver texto customizado, usa ele
+        if (!string.IsNullOrEmpty(currentCustomText))
+            return currentCustomText;
+
         switch (currentQuestType)
         {
             case QuestType.Talk:
@@ -444,7 +452,7 @@ public class QuestManager : MonoBehaviour
 
         switch (currentQuestType)
         {
-         
+
             case QuestType.Talk:
 
                 if (type == "NPC" &&
@@ -532,6 +540,7 @@ public class QuestManager : MonoBehaviour
 
         currentTarget = "";
         currentRequiredItem = "";
+        currentCustomText = "";
 
         HideQuestBox();
     }

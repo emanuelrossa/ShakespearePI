@@ -1,5 +1,6 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class NPC : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class NPC : MonoBehaviour
         AfterQuestDone
     }
 
-    [Header("Identificação")]
+    [Header("Identificaï¿½ï¿½o")]
     public Type type;
     public string id;
     public string npcName;
 
-    [Header("Diálogos")]
+    [Header("Diï¿½logos")]
     [TextArea] public string[] dialogue;
     [TextArea] public string[] questDoneDialogue;
 
@@ -34,11 +35,14 @@ public class NPC : MonoBehaviour
     public bool changeSceneAfterQuestDone = false;
     public string sceneToLoad;
 
-    [Header("Missão")]
+    [Header("Missï¿½o")]
     public bool givesQuest;
     public QuestManager.QuestType questType;
     public string target;
     public string requiredItem;
+
+    [Tooltip("Texto customizado pra mostrar na caixa de missao (deixa vazio pra usar o texto automatico)")]
+    public string customQuestText = "";
 
     [Header("Comportamento de Seguir (Opcional)")]
     public NPCFollow followScript;
@@ -48,6 +52,9 @@ public class NPC : MonoBehaviour
 
     [Header("Outline")]
     public Outline outline;
+
+    [Header("Eventos")]
+    public UnityEvent onInteractionFinished;
 
     private float interactCooldown;
     private Transform playerTransform;
@@ -125,9 +132,11 @@ public class NPC : MonoBehaviour
 
         if (givesQuest)
         {
-            QuestManager.Instance.StartQuest(questType, target, requiredItem);
+            QuestManager.Instance.StartQuest(questType, target, requiredItem, customQuestText);
             givesQuest = false;
         }
+
+        onInteractionFinished?.Invoke();
 
         if (isCompleted && changeSceneAfterQuestDone && !string.IsNullOrEmpty(sceneToLoad))
         {
