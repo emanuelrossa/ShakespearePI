@@ -1,9 +1,9 @@
 using UnityEngine;
+using System.Collections; // <-- adiciona essa linha
 
 public class GameState : MonoBehaviour
 {
     public static GameState Instance;
-
     public bool introMonologueDone;
     public bool questTriggered;
     public string currentQuestId = "";

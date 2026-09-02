@@ -18,7 +18,15 @@ public class SaveableEntity : MonoBehaviour
 
     public void LoadFromData(EntitySaveData data)
     {
+        CharacterController cc = GetComponent<CharacterController>();
+
+        if (cc != null)
+            cc.enabled = false; // desativa pra ele não brigar com a posição
+
         transform.position = new Vector3(data.posX, data.posY, data.posZ);
         transform.eulerAngles = new Vector3(0, data.rotY, 0);
+
+        if (cc != null)
+            cc.enabled = true; // reativa depois de já ter movido
     }
 }

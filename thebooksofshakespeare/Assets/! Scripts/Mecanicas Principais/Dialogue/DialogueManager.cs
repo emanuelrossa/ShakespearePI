@@ -36,17 +36,25 @@ public class DialogueManager : MonoBehaviour
 
         if (player == null)
         {
-            player = FindFirstObjectByType<FirstPersonController>();
+            player = FindFirstObjectByType<FirstPersonController>(FindObjectsInactive.Include);
         }
     }
 
     public void StartDialogue(string npcName, string[] dialogue, NPC npc)
     {
+        // tenta de novo caso o Awake não tenha achado (ex: player desativado na hora do Load)
+        if (player == null)
+        {
+            player = FindFirstObjectByType<FirstPersonController>(FindObjectsInactive.Include);
+        }
+
+        if (player == null)
+        {
+            Debug.LogError("DialogueManager: não achou o FirstPersonController! Arrasta ele manualmente no campo Player do Inspector.");
+            return;
+        }
 
         player.canMove = false;
-
-        if (player != null)
-            player.canMove = false;
 
         if (IsTalking)
             return;
