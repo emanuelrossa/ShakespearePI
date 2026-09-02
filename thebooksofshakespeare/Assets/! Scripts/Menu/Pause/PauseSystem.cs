@@ -6,8 +6,13 @@ public class PauseSystem : MonoBehaviour
 {
     public static PauseSystem Instance;
 
+    [Header("UI & Scripts")]
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private MonoBehaviour[] scriptsToDisableOnPause; // arrasta aqui o script de movimento/câmera
+    [SerializeField] private MonoBehaviour[] scriptsToDisableOnPause;
+
+    [Header("Configurações do Cursor (Durante o Jogo)")]
+    [SerializeField] private CursorLockMode gameplayLockMode = CursorLockMode.Locked;
+    [SerializeField] private bool gameplayCursorVisible = false;
 
     private bool paused = false;
 
@@ -21,9 +26,10 @@ public class PauseSystem : MonoBehaviour
         if (pauseMenu != null)
             pauseMenu.SetActive(false);
 
-        // checagem de segurança, printa no console se faltar algo essencial
         if (FindFirstObjectByType<EventSystem>() == null)
             Debug.LogError("Não tem EventSystem na cena! Cria um: botão direito na Hierarchy > UI > Event System");
+
+        AplicarEstadoCursor(false);
     }
 
     private void Update()
@@ -39,6 +45,7 @@ public class PauseSystem : MonoBehaviour
         paused = !paused;
 
         Time.timeScale = paused ? 0f : 1f;
+        AudioListener.pause = paused;
 
         if (pauseMenu != null)
             pauseMenu.SetActive(paused);
@@ -49,8 +56,21 @@ public class PauseSystem : MonoBehaviour
                 script.enabled = !paused;
         }
 
-        Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = paused;
+        AplicarEstadoCursor(paused);
+    }
+
+    private void AplicarEstadoCursor(bool estaPausado)
+    {
+        if (estaPausado)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = gameplayLockMode;
+            Cursor.visible = gameplayCursorVisible;
+        }
     }
 
     public void Resume()
@@ -61,13 +81,13 @@ public class PauseSystem : MonoBehaviour
 
     public void Restart()
     {
-        Time.timeScale = 1f;
+        RestaurarEstadoGeral();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
+        RestaurarEstadoGeral();
         SceneManager.LoadScene("TitleScene");
     }
 
@@ -78,5 +98,14 @@ public class PauseSystem : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void RestaurarEstadoGeral()
+    {
+        AudioListener.pause = false;
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

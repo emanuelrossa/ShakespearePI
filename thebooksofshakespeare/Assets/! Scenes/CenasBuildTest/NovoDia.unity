@@ -1780,8 +1780,8 @@ MonoBehaviour:
   - "Merc\xFArio: N\xE3o se preocupe."
   - "Merc\xFArio: Eu resolvo isso."
   questDoneDialogue: []
-  destroyWhen: 1
-  targetToDestroy: {fileID: 1404928244}
+  destroyWhen: 0
+  targetToDestroy: {fileID: 0}
   changeSceneAfterQuestDone: 0
   sceneToLoad: 
   givesQuest: 1
@@ -6568,15 +6568,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecdf4847efe02544aa4fd01a9262dbe2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2013153
+      value: -125.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecdf4847efe02544aa4fd01a9262dbe2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.79
+      value: -0.022
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecdf4847efe02544aa4fd01a9262dbe2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.042
+      value: 55.66
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecdf4847efe02544aa4fd01a9262dbe2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6663,7 +6663,7 @@ Animator:
   m_GameObject: {fileID: 423369399}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ecdf4847efe02544aa4fd01a9262dbe2, type: 3}
-  m_Controller: {fileID: 9100000, guid: ffee814cf71032e438839b798c33a1ba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7d3776b56d5055e478ec029280f117fa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6703,7 +6703,7 @@ MonoBehaviour:
   customQuestText: 
   followScript: {fileID: 0}
   isCompleted: 0
-  outline: {fileID: 423369403}
+  outline: {fileID: 0}
   onInteractionFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -9330,7 +9330,7 @@ Transform:
   m_GameObject: {fileID: 690431841}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00014822233}
-  m_LocalPosition: {x: 14.1, y: 0.00001, z: -23.74}
+  m_LocalPosition: {x: 14.1, y: 0.00001, z: -24.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26270,7 +26270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01595c9d65702f8458be2a312e198f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveController
-  playerSaveData: {fileID: 0}
 --- !u!4 &2071773387
 Transform:
   m_ObjectHideFlags: 0
