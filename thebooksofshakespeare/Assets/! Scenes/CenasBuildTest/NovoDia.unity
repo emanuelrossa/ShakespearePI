@@ -1951,6 +1951,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.30942288, y: 3.4100718, z: 0.3058468}
   m_Center: {x: -0.0000019073486, y: 1.7009225, z: -0.000002488494}
+--- !u!224 &67409577 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 2042595804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &68290728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16377,6 +16382,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12892182, y: 0.64699304, z: 0.43834382}
   m_Center: {x: -0.0025020614, y: 0.3230272, z: 0.21917948}
+--- !u!1 &1252855663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252855664}
+  - component: {fileID: 1252855665}
+  m_Layer: 5
+  m_Name: Salvar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1252855664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252855663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 67409577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1252855665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252855663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4697c100c54c5ba4ea20da5e9f287c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
 --- !u!65 &1253484747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19674,6 +19727,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.33333325, y: 2.1465204, z: 2.7950711}
   m_Center: {x: 0.000002026558, y: 1.0732602, z: -0.0007703303}
+--- !u!1 &1470747338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470747339}
+  - component: {fileID: 1470747340}
+  m_Layer: 5
+  m_Name: SairDoJogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1470747339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470747338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 67409577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1470747340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470747338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e41e02a28c9b748976b77183977194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
 --- !u!65 &1472239618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25896,6 +25997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3318448674493496837, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.71
@@ -25948,9 +26053,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 25.902
       objectReference: {fileID: 0}
+    - target: {fileID: 7913344982510435262, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1252855665}
+    - target: {fileID: 7913344982510435262, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1470747340}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SairDoGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuitGame, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1252855664}
+    - targetCorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1470747339}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!114 &2042595805 stripped
@@ -27238,12 +27369,12 @@ SceneRoots:
   - {fileID: 556825828}
   - {fileID: 429052490}
   - {fileID: 507292367}
-  - {fileID: 2042595804}
   - {fileID: 1404928243}
   - {fileID: 423369398}
   - {fileID: 65608207}
   - {fileID: 6376210585827468064}
   - {fileID: 1594344507}
+  - {fileID: 2042595804}
   - {fileID: 1126237850}
   - {fileID: 1295126245}
   - {fileID: 1381656615}
