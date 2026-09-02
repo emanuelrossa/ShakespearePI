@@ -20,6 +20,11 @@ public class GuardPatrol : MonoBehaviour
     public AudioClip footstepClip;
     private AudioSource audioSource;
 
+    [Header("Animação")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private string isWalkingParam = "IsWalking";
+    [SerializeField] private string isIdleParam = "IsIdle";
+
     [Header("Derrota")]
     public GameObject gameOverCanvas;
 
@@ -29,11 +34,19 @@ public class GuardPatrol : MonoBehaviour
     private bool isWaiting = false;
     private bool playerDetected = false;
 
-    private void Start()
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
+
+    private void Start()
+    {
         if (footstepClip != null)
         {
             audioSource.clip = footstepClip;
@@ -52,11 +65,15 @@ public class GuardPatrol : MonoBehaviour
         if (playerDetected)
         {
             if (audioSource.isPlaying) audioSource.Stop();
+            AtualizarEstadoAnimacao(false);
             return;
         }
 
         CheckForPlayer();
         HandleFootsteps();
+
+        bool isMoving = agent.velocity.sqrMagnitude > 0.01f && !isWaiting;
+        AtualizarEstadoAnimacao(isMoving);
 
         if (waypoints.Length == 0) return;
 
@@ -75,6 +92,15 @@ public class GuardPatrol : MonoBehaviour
                 isWaiting = false;
                 MoveToNextWaypoint();
             }
+        }
+    }
+
+    private void AtualizarEstadoAnimacao(bool isMoving)
+    {
+        if (animator != null)
+        {
+            animator.SetBool(isWalkingParam, isMoving);
+            animator.SetBool(isIdleParam, !isMoving);
         }
     }
 
@@ -126,6 +152,7 @@ public class GuardPatrol : MonoBehaviour
             gameOverCanvas.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
