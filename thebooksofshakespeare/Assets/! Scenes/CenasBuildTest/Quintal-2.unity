@@ -1728,9 +1728,13 @@ MonoBehaviour:
   questType: 1
   target: "Frei Louren\xE7o"
   requiredItem: 
+  customQuestText: 
   followScript: {fileID: 155556742}
   isCompleted: 0
   outline: {fileID: 155556741}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &155556741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,6 +2300,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02938258, y: 0.19012162, z: 0.25192514}
   m_Center: {x: 0.003338937, y: 0.0783894, z: 0.020676631}
+--- !u!224 &187442364 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 756649611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &200910393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3540,6 +3549,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02938258, y: 0.19012162, z: 0.25192514}
   m_Center: {x: 0.003338937, y: 0.0783894, z: 0.020676631}
+--- !u!1 &311418632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311418633}
+  - component: {fileID: 311418634}
+  m_Layer: 5
+  m_Name: SairDoJogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &311418633
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311418632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 187442364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &311418634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311418632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e41e02a28c9b748976b77183977194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
 --- !u!1001 &314615828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7910,6 +7967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3318448674493496837, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.709997
@@ -7970,9 +8031,35 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -170.29872
       objectReference: {fileID: 0}
+    - target: {fileID: 7913344982510435262, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2057077210}
+    - target: {fileID: 7913344982510435262, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 311418634}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SairDoGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuitGame, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057077209}
+    - targetCorrespondingSourceObject: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 311418633}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!114 &756649612 stripped
@@ -18464,9 +18551,13 @@ MonoBehaviour:
   questType: 0
   target: "Frei Louren\xE7o"
   requiredItem: 
+  customQuestText: 
   followScript: {fileID: 0}
   isCompleted: 1
   outline: {fileID: 1918633636}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &1918633632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19959,6 +20050,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02938258, y: 0.19012162, z: 0.25192514}
   m_Center: {x: 0.003338937, y: 0.0783894, z: 0.020676631}
+--- !u!1 &2057077208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057077209}
+  - component: {fileID: 2057077210}
+  m_Layer: 5
+  m_Name: Salvar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2057077209
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057077208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 187442364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2057077210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057077208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4697c100c54c5ba4ea20da5e9f287c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
 --- !u!1001 &2063728861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20495,10 +20634,10 @@ SceneRoots:
   - {fileID: 381161008}
   - {fileID: 670693842}
   - {fileID: 155556736}
-  - {fileID: 756649611}
   - {fileID: 1918633625}
   - {fileID: 661774952}
   - {fileID: 1432672534}
   - {fileID: 1778063709}
   - {fileID: 1931598206}
   - {fileID: 1850967705}
+  - {fileID: 756649611}

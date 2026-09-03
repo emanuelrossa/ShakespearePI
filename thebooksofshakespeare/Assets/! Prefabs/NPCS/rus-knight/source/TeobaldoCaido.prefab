@@ -1,0 +1,194 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3124602004576055955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8714244427164224958, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7a708ba745f8614d8851a98e1b48d95, type: 2}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.0363605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.0363605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0363605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -26.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 56.221
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7a708ba745f8614d8851a98e1b48d95, type: 2}
+    - target: {fileID: -143223397262327828, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7a708ba745f8614d8851a98e1b48d95, type: 2}
+    - target: {fileID: 636606197543093963, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b3a20f1e4ebc2846b07bd9078d5c545, type: 2}
+    - target: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_Name
+      value: Teobaldo 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8d627d0488a4492428c2000bd873b094, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1914552114882804425}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8411386091609310471}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3446741029494236725}
+  m_SourcePrefab: {fileID: 100100000, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+--- !u!1 &2854641311803740098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f67f3efcd437ab4498a7a31f61fc2e92, type: 3}
+  m_PrefabInstance: {fileID: 3124602004576055955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1914552114882804425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854641311803740098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af455c964e3bd8a45a91923032e76500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPC
+  type: 0
+  id: Teobaldo
+  npcName: Teobaldo
+  dialogue:
+  - "Teobaldo: Finalmente encontrei voc\xEAs."
+  - "Merc\xFArio: Se quer problemas, fale comigo."
+  questDoneDialogue: []
+  destroyWhen: 0
+  targetToDestroy: {fileID: 0}
+  changeSceneAfterQuestDone: 0
+  sceneToLoad: 
+  givesQuest: 0
+  questType: 0
+  target: 
+  requiredItem: 
+  customQuestText: 
+  followScript: {fileID: 0}
+  isCompleted: 0
+  outline: {fileID: 3446741029494236725}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TeobaldoEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &8411386091609310471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854641311803740098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45519435, y: 0.92929035, z: 0.29136673}
+  m_Center: {x: -0.008145248, y: 0.49204952, z: -0.013569467}
+--- !u!114 &3446741029494236725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2854641311803740098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
