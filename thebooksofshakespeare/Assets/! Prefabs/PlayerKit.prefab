@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 8002465134770554540}
   - component: {fileID: 8104923123493277615}
   - component: {fileID: 541971450718050707}
-  - component: {fileID: 1251428899408901548}
   m_Layer: 5
   m_Name: sair
   m_TagString: Untagged
@@ -332,20 +331,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1251428899408901548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314092746176750883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9571b39ea84542c4a841183ecbbc8a64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuHover
-  hoverScaleMultiplier: 1.2
-  speed: 10
 --- !u!1 &371859548867267368
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +509,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336765865051702170}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1668,7 +1653,6 @@ GameObject:
   - component: {fileID: 7913344982510435262}
   - component: {fileID: 830603150236085560}
   - component: {fileID: 8420611967934720598}
-  - component: {fileID: 8087347428181019137}
   m_Layer: 5
   m_Name: salvar
   m_TagString: Untagged
@@ -1777,19 +1761,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2509165217372475333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SaveManager, Assembly-CSharp
-        m_MethodName: Save
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &830603150236085560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,20 +1822,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8087347428181019137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5863181384675463531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9571b39ea84542c4a841183ecbbc8a64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuHover
-  hoverScaleMultiplier: 1.2
-  speed: 10
 --- !u!1 &6613095631099237253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,7 +2049,6 @@ GameObject:
   - component: {fileID: 7452054446372965232}
   - component: {fileID: 3422544119658772602}
   - component: {fileID: 8009921542435997290}
-  - component: {fileID: 4786935517240691441}
   m_Layer: 5
   m_Name: continuar
   m_TagString: Untagged
@@ -2273,20 +2230,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4786935517240691441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7435632816147888516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9571b39ea84542c4a841183ecbbc8a64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuHover
-  hoverScaleMultiplier: 1.2
-  speed: 10
 --- !u!1 &7880888949085184819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,8 +2264,8 @@ RectTransform:
   - {fileID: 7433104322795157173}
   - {fileID: 2235616646974629536}
   - {fileID: 6453619859370473050}
-  - {fileID: 6883093065798322483}
   - {fileID: 483122510190623342}
+  - {fileID: 6883093065798322483}
   m_Father: {fileID: 1274276510007270199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2573,25 +2516,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -20.71
       objectReference: {fileID: 0}
-    - target: {fileID: 5126527961139664760, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.161317
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126527961139664760, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -23.948788
-      objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.2
+      value: 0.0024003983
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.3
+      value: -20.88306
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.5
+      value: -37.64573
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2632,28 +2567,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7094977340588366727, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4218362929550126368}
-    - targetCorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8566897850686690859}
   m_SourcePrefab: {fileID: 100100000, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
---- !u!1 &1151806694198094893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 453084650579209855, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
-  m_PrefabInstance: {fileID: 699645650646368850}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8566897850686690859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151806694198094893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341d9452994e6fb42b6fd296ac017238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveableEntity
-  id: Player
 --- !u!20 &5661220478190802221 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5126527961139664767, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
