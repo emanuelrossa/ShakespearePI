@@ -328,8 +328,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
     - target: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -346,13 +344,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -23.948786
       objectReference: {fileID: 0}
->>>>>>> Stashed changes
     - target: {fileID: 4893898419256423271, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_Name
       value: PlayerKit
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
     - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.z
       value: -23.948788
@@ -369,7 +364,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8.121
       objectReference: {fileID: 0}
->>>>>>> Stashed changes
     - target: {fileID: 7452054446372965232, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
