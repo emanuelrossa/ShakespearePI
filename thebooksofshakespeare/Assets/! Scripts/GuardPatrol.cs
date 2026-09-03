@@ -16,8 +16,13 @@ public class GuardPatrol : MonoBehaviour
     public float viewAngle = 60f;
     public LayerMask obstacleMask;
 
-    [Header("Som de Passos")]
+    [Header("Tempo de Reação")]
+    public float timeToDetect = 1.5f;
+    public float detectionCooldownSpeed = 1f;
+
+    [Header("Sons")]
     public AudioClip footstepClip;
+    public AudioClip alertClip;
     private AudioSource audioSource;
 
     [Header("Animação")]
@@ -34,6 +39,9 @@ public class GuardPatrol : MonoBehaviour
     private bool isWaiting = false;
     private bool playerDetected = false;
 
+    private float currentDetectionTimer = 0f;
+    private bool playedAlertSound = false;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -47,13 +55,6 @@ public class GuardPatrol : MonoBehaviour
 
     private void Start()
     {
-        if (footstepClip != null)
-        {
-            audioSource.clip = footstepClip;
-            audioSource.loop = true;
-            audioSource.playOnAwake = false;
-        }
-
         if (waypoints.Length > 0)
         {
             MoveToNextWaypoint();
@@ -64,7 +65,6 @@ public class GuardPatrol : MonoBehaviour
     {
         if (playerDetected)
         {
-            if (audioSource.isPlaying) audioSource.Stop();
             AtualizarEstadoAnimacao(false);
             return;
         }
@@ -72,12 +72,12 @@ public class GuardPatrol : MonoBehaviour
         CheckForPlayer();
         HandleFootsteps();
 
-        bool isMoving = agent.velocity.sqrMagnitude > 0.01f && !isWaiting;
+        bool isMoving = agent.velocity.sqrMagnitude > 0.01f && !isWaiting && !agent.isStopped;
         AtualizarEstadoAnimacao(isMoving);
 
         if (waypoints.Length == 0) return;
 
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.isStopped && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             if (!isWaiting)
             {
@@ -95,33 +95,11 @@ public class GuardPatrol : MonoBehaviour
         }
     }
 
-    private void AtualizarEstadoAnimacao(bool isMoving)
-    {
-        if (animator != null)
-        {
-            animator.SetBool(isWalkingParam, isMoving);
-            animator.SetBool(isIdleParam, !isMoving);
-        }
-    }
-
-    private void HandleFootsteps()
-    {
-        bool isMoving = agent.velocity.sqrMagnitude > 0.1f && !isWaiting;
-
-        if (isMoving && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-        else if (!isMoving && audioSource.isPlaying)
-        {
-            audioSource.Stop();
-        }
-    }
-
     private void CheckForPlayer()
     {
         if (player == null) return;
 
+        bool canSeePlayer = false;
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -131,9 +109,76 @@ public class GuardPatrol : MonoBehaviour
             {
                 if (!Physics.Raycast(transform.position + Vector3.up, dirToPlayer, distanceToPlayer, obstacleMask))
                 {
-                    GameOver();
+                    canSeePlayer = true;
                 }
             }
+        }
+
+        if (canSeePlayer)
+        {
+            agent.isStopped = true;
+
+            Vector3 lookDir = dirToPlayer;
+            lookDir.y = 0;
+            if (lookDir != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 10f);
+            }
+
+            if (!playedAlertSound && alertClip != null)
+            {
+                audioSource.PlayOneShot(alertClip);
+                playedAlertSound = true;
+            }
+
+            currentDetectionTimer += Time.deltaTime;
+
+            if (currentDetectionTimer >= timeToDetect)
+            {
+                GameOver();
+            }
+        }
+        else
+        {
+            currentDetectionTimer -= Time.deltaTime * detectionCooldownSpeed;
+            currentDetectionTimer = Mathf.Max(0f, currentDetectionTimer);
+
+            if (currentDetectionTimer == 0f)
+            {
+                playedAlertSound = false;
+                agent.isStopped = false;
+            }
+        }
+    }
+
+    private void HandleFootsteps()
+    {
+        if (playedAlertSound && audioSource.isPlaying && audioSource.clip != footstepClip)
+            return;
+
+        bool isMoving = agent.velocity.sqrMagnitude > 0.1f && !isWaiting && !agent.isStopped;
+
+        if (isMoving)
+        {
+            if (footstepClip != null && (!audioSource.isPlaying || audioSource.clip != footstepClip))
+            {
+                audioSource.clip = footstepClip;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+        }
+        else if (!isMoving && audioSource.isPlaying && audioSource.clip == footstepClip)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    private void AtualizarEstadoAnimacao(bool isMoving)
+    {
+        if (animator != null)
+        {
+            animator.SetBool(isWalkingParam, isMoving);
+            animator.SetBool(isIdleParam, !isMoving);
         }
     }
 

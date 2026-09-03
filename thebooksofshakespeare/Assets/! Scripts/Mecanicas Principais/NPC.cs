@@ -18,12 +18,15 @@ public class NPC : MonoBehaviour
         AfterQuestDone
     }
 
-    [Header("Identifica��o")]
+    [Header("Identificação")]
     public Type type;
     public string id;
     public string npcName;
 
-    [Header("Di�logos")]
+    [Header("Indicador Visual")]
+    public GameObject interactionIndicator;
+
+    [Header("Diálogos")]
     [TextArea] public string[] dialogue;
     [TextArea] public string[] questDoneDialogue;
 
@@ -35,13 +38,12 @@ public class NPC : MonoBehaviour
     public bool changeSceneAfterQuestDone = false;
     public string sceneToLoad;
 
-    [Header("Miss�o")]
+    [Header("Missão")]
     public bool givesQuest;
     public QuestManager.QuestType questType;
     public string target;
     public string requiredItem;
 
-    [Tooltip("Texto customizado pra mostrar na caixa de missao (deixa vazio pra usar o texto automatico)")]
     public string customQuestText = "";
 
     [Header("Comportamento de Seguir (Opcional)")]
@@ -75,6 +77,8 @@ public class NPC : MonoBehaviour
         {
             playerTransform = playerObj.transform;
         }
+
+        UpdateIndicatorState();
     }
 
     public void SetOutline(bool enabled)
@@ -90,6 +94,9 @@ public class NPC : MonoBehaviour
 
         if (DialogueManager.Instance == null || DialogueManager.Instance.IsTalking)
             return;
+
+        if (interactionIndicator != null)
+            interactionIndicator.SetActive(false);
 
         if (type == Type.Item)
         {
@@ -149,7 +156,23 @@ public class NPC : MonoBehaviour
             followScript.StartFollowing();
         }
 
+        UpdateIndicatorState();
+
         ExecuteDestroyLogic();
+    }
+
+    private void UpdateIndicatorState()
+    {
+        if (interactionIndicator == null) return;
+
+        if (isCompleted && (questDoneDialogue == null || questDoneDialogue.Length == 0))
+        {
+            interactionIndicator.SetActive(false);
+        }
+        else
+        {
+            interactionIndicator.SetActive(true);
+        }
     }
 
     private void LookAtPlayer()
