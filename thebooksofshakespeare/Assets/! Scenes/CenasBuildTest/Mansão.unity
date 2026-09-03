@@ -14848,11 +14848,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MaxDistance
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MinDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: rolloffMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4783978670262230142, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Name
@@ -17688,7 +17696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 5.02
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
