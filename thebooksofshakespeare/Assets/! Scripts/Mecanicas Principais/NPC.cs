@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
@@ -34,9 +35,12 @@ public class NPC : MonoBehaviour
     public DestroyCondition destroyWhen = DestroyCondition.Never;
     public GameObject targetToDestroy;
 
-    [Header("Troca de Cena (Sem Fade)")]
+    [Header("Troca de Cena")]
     public bool changeSceneAfterQuestDone = false;
     public string sceneToLoad;
+    public bool useFadeOnSceneChange = false;
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private float fadeDuration = 1.0f;
 
     [Header("Missão")]
     public bool givesQuest;
@@ -147,7 +151,14 @@ public class NPC : MonoBehaviour
 
         if (isCompleted && changeSceneAfterQuestDone && !string.IsNullOrEmpty(sceneToLoad))
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (useFadeOnSceneChange && fadeCanvasGroup != null)
+            {
+                StartCoroutine(FadeAndLoadScene());
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
             return;
         }
 
@@ -159,6 +170,21 @@ public class NPC : MonoBehaviour
         UpdateIndicatorState();
 
         ExecuteDestroyLogic();
+    }
+
+    private IEnumerator FadeAndLoadScene()
+    {
+        fadeCanvasGroup.blocksRaycasts = true;
+        float counter = 0f;
+
+        while (counter < fadeDuration)
+        {
+            counter += Time.deltaTime;
+            fadeCanvasGroup.alpha = Mathf.Clamp01(counter / fadeDuration);
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private void UpdateIndicatorState()

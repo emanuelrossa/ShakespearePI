@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(AudioSource))]
 public class GuardPatrol : MonoBehaviour
 {
     [Header("Pontos de Patrulha")]
@@ -16,19 +16,21 @@ public class GuardPatrol : MonoBehaviour
     public float viewAngle = 60f;
     public LayerMask obstacleMask;
 
-    [Header("Tempo de Reação")]
+    [Header("Tempo de Reação e Procura")]
     public float timeToDetect = 1.5f;
-    public float detectionCooldownSpeed = 1f;
+    public float searchTime = 3f;
 
-    [Header("Sons")]
-    public AudioClip footstepClip;
-    public AudioClip alertClip;
-    private AudioSource audioSource;
+    [Header("Indicador de Alerta")]
+    public GameObject _detection;
 
-    [Header("Animação")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private string isWalkingParam = "IsWalking";
-    [SerializeField] private string isIdleParam = "IsIdle";
+    [Header("Fontes de Áudio")]
+    public AudioSource footstepAudioSource;
+    public AudioSource alertAudioSource;
+
+    private Animator animator;
+    private string isWalkingParam = "IsWalking";
+    private string isIdleParam = "IsIdle";
+    private string surpriseTriggerParam = "Surprise";
 
     [Header("Derrota")]
     public GameObject gameOverCanvas;
@@ -42,10 +44,12 @@ public class GuardPatrol : MonoBehaviour
     private float currentDetectionTimer = 0f;
     private bool playedAlertSound = false;
 
+    private bool isSearching = false;
+    private float searchTimer = 0f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
 
         if (animator == null)
         {
@@ -55,6 +59,11 @@ public class GuardPatrol : MonoBehaviour
 
     private void Start()
     {
+        if (_detection != null)
+        {
+            _detection.SetActive(false);
+        }
+
         if (waypoints.Length > 0)
         {
             MoveToNextWaypoint();
@@ -71,13 +80,14 @@ public class GuardPatrol : MonoBehaviour
 
         CheckForPlayer();
         HandleFootsteps();
+        UpdateDetectionUI();
 
         bool isMoving = agent.velocity.sqrMagnitude > 0.01f && !isWaiting && !agent.isStopped;
         AtualizarEstadoAnimacao(isMoving);
 
         if (waypoints.Length == 0) return;
 
-        if (!agent.isStopped && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        if (!agent.isStopped && !isSearching && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             if (!isWaiting)
             {
@@ -116,6 +126,7 @@ public class GuardPatrol : MonoBehaviour
 
         if (canSeePlayer)
         {
+            isSearching = false;
             agent.isStopped = true;
 
             Vector3 lookDir = dirToPlayer;
@@ -125,9 +136,18 @@ public class GuardPatrol : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 10f);
             }
 
-            if (!playedAlertSound && alertClip != null)
+            if (!playedAlertSound)
             {
-                audioSource.PlayOneShot(alertClip);
+                if (alertAudioSource != null)
+                {
+                    alertAudioSource.Play();
+                }
+
+                if (animator != null && !string.IsNullOrEmpty(surpriseTriggerParam))
+                {
+                    animator.SetTrigger(surpriseTriggerParam);
+                }
+
                 playedAlertSound = true;
             }
 
@@ -140,36 +160,68 @@ public class GuardPatrol : MonoBehaviour
         }
         else
         {
-            currentDetectionTimer -= Time.deltaTime * detectionCooldownSpeed;
-            currentDetectionTimer = Mathf.Max(0f, currentDetectionTimer);
-
-            if (currentDetectionTimer == 0f)
+            if (currentDetectionTimer > 0f)
             {
-                playedAlertSound = false;
-                agent.isStopped = false;
+                if (!isSearching)
+                {
+                    isSearching = true;
+                    searchTimer = searchTime;
+                    agent.isStopped = true;
+                }
+
+                searchTimer -= Time.deltaTime;
+
+                if (searchTimer <= 0f)
+                {
+                    ForgetPlayer();
+                }
             }
+        }
+    }
+
+    private void UpdateDetectionUI()
+    {
+        bool shouldShowUI = currentDetectionTimer > 0f || isSearching;
+
+        if (_detection != null)
+        {
+            _detection.SetActive(shouldShowUI);
+        }
+
+    }
+
+    private void ForgetPlayer()
+    {
+        currentDetectionTimer = 0f;
+        playedAlertSound = false;
+        isSearching = false;
+        agent.isStopped = false;
+
+        if (_detection != null)
+        {
+            _detection.SetActive(false);
         }
     }
 
     private void HandleFootsteps()
     {
-        if (playedAlertSound && audioSource.isPlaying && audioSource.clip != footstepClip)
-            return;
+        if (footstepAudioSource == null) return;
 
         bool isMoving = agent.velocity.sqrMagnitude > 0.1f && !isWaiting && !agent.isStopped;
 
         if (isMoving)
         {
-            if (footstepClip != null && (!audioSource.isPlaying || audioSource.clip != footstepClip))
+            if (!footstepAudioSource.isPlaying)
             {
-                audioSource.clip = footstepClip;
-                audioSource.loop = true;
-                audioSource.Play();
+                footstepAudioSource.Play();
             }
         }
-        else if (!isMoving && audioSource.isPlaying && audioSource.clip == footstepClip)
+        else
         {
-            audioSource.Stop();
+            if (footstepAudioSource.isPlaying)
+            {
+                footstepAudioSource.Stop();
+            }
         }
     }
 
@@ -187,9 +239,14 @@ public class GuardPatrol : MonoBehaviour
         playerDetected = true;
         agent.isStopped = true;
 
-        if (audioSource.isPlaying)
+        if (footstepAudioSource != null && footstepAudioSource.isPlaying)
         {
-            audioSource.Stop();
+            footstepAudioSource.Stop();
+        }
+
+        if (_detection != null)
+        {
+            _detection.SetActive(false);
         }
 
         if (gameOverCanvas != null)
