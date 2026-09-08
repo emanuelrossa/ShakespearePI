@@ -105,7 +105,7 @@ public class PauseSystem : MonoBehaviour
         AudioListener.pause = false;
         Time.timeScale = 1f;
 
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.None; Cursor.visible = false;
         Cursor.visible = true;
     }
 }
