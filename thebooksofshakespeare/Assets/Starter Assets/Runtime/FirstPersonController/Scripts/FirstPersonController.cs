@@ -63,6 +63,7 @@ namespace StarterAssets
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
+
 	
 #if ENABLE_INPUT_SYSTEM
 		private PlayerInput _playerInput;
@@ -72,9 +73,8 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
-        public bool canMove = true;
 
-        private bool IsCurrentDeviceMouse
+		private bool IsCurrentDeviceMouse
 		{
 			get
 			{
@@ -110,26 +110,19 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 		}
 
-        private void Update()
-        {
-            JumpAndGravity();
-            GroundedCheck();
+		private void Update()
+		{
+			JumpAndGravity();
+			GroundedCheck();
+			Move();
+		}
 
-            if (canMove)
-            {
-                Move();
-            }
-        }
+		private void LateUpdate()
+		{
+			CameraRotation();
+		}
 
-        private void LateUpdate()
-        {
-            if (canMove)
-            {
-                CameraRotation();
-            }
-        }
-
-        private void GroundedCheck()
+		private void GroundedCheck()
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);

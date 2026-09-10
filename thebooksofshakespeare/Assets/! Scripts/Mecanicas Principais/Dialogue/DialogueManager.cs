@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        player.canMove = false;
+       
 
         if (IsTalking)
             return;
@@ -117,7 +117,7 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(false);
 
         if (player != null)
-            player.canMove = true;
+            
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
