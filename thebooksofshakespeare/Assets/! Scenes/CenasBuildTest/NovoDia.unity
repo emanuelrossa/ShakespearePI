@@ -1732,7 +1732,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: d82b504be1ba1c84d9d4c6ebea15677a, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1785,6 +1785,9 @@ MonoBehaviour:
   targetToDestroy: {fileID: 0}
   changeSceneAfterQuestDone: 0
   sceneToLoad: 
+  useFadeOnSceneChange: 0
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
   givesQuest: 1
   questType: 1
   target: Teobaldo
@@ -6437,6 +6440,9 @@ MonoBehaviour:
   targetToDestroy: {fileID: 0}
   changeSceneAfterQuestDone: 0
   sceneToLoad: 
+  useFadeOnSceneChange: 0
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
   givesQuest: 0
   questType: 0
   target: 
@@ -18921,6 +18927,9 @@ MonoBehaviour:
   targetToDestroy: {fileID: 0}
   changeSceneAfterQuestDone: 0
   sceneToLoad: 
+  useFadeOnSceneChange: 0
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
   givesQuest: 0
   questType: 0
   target: 
