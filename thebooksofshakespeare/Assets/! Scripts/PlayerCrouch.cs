@@ -46,7 +46,6 @@ public class PlayerCrouch : MonoBehaviour
             return;
         }
 
-        // Guarda os valores originais
         standingHeight = controller.height;
         standingCenter = controller.center;
 
@@ -88,7 +87,6 @@ public class PlayerCrouch : MonoBehaviour
         }
         else if (IsCrouching)
         {
-            // Só levanta de verdade se não tiver nada em cima da cabeça
             IsCrouching = !CanStandUp();
             wantsToStandButBlocked = IsCrouching;
         }
@@ -100,8 +98,6 @@ public class PlayerCrouch : MonoBehaviour
     {
         float radius = Mathf.Max(controller.radius - controller.skinWidth, 0.01f);
 
-        // Só checa o "vão" entre o topo atual (agachado) e o topo em pé —
-        // assim não colide com o chão nem com o próprio corpo do player lá embaixo.
         float currentTopY = controller.center.y + controller.height * 0.5f - radius;
         float standingTopY = standingCenter.y + standingHeight * 0.5f - radius;
 
@@ -117,10 +113,9 @@ public class PlayerCrouch : MonoBehaviour
             Collider hit = ceilingCheckResults[i];
             if (hit == null) continue;
 
-            // Ignora qualquer collider que seja do próprio player
             if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
 
-            return false; // achou teto de verdade
+            return false; 
         }
 
         return true;
@@ -151,10 +146,6 @@ public class PlayerCrouch : MonoBehaviour
             ? crouchHeight
             : standingHeight;
 
-        // ==========================================
-        // MANTER OS PÉS NO MESMO LUGAR
-        // ==========================================
-
         float feetPosition = standingCenter.y - standingHeight / 2f;
 
         float targetCenterY = feetPosition + targetHeight / 2f;
@@ -162,23 +153,18 @@ public class PlayerCrouch : MonoBehaviour
         Vector3 targetCenter = standingCenter;
         targetCenter.y = targetCenterY;
 
-        // Altura
         controller.height = Mathf.Lerp(
             controller.height,
             targetHeight,
             crouchTransitionSpeed * Time.deltaTime
         );
 
-        // Centro
         controller.center = Vector3.Lerp(
             controller.center,
             targetCenter,
             crouchTransitionSpeed * Time.deltaTime
         );
 
-        // ==========================================
-        // MODELO VISUAL (opcional)
-        // ==========================================
 
         if (visualModel != null)
         {
