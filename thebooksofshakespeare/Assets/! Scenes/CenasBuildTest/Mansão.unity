@@ -23991,7 +23991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4783978670262230142, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Name
-      value: Paladin WProp J Nordstrom
+      value: Paladin WProp J Nordstrom (GuardPatrolEnemy)
       objectReference: {fileID: 0}
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalScale.x
