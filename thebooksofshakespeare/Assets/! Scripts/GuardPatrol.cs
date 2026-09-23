@@ -187,7 +187,6 @@ public class GuardPatrol : MonoBehaviour
         {
             _detection.SetActive(shouldShowUI);
         }
-
     }
 
     private void ForgetPlayer()
@@ -255,6 +254,11 @@ public class GuardPatrol : MonoBehaviour
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+
+        if (player != null)
+        {
+            player.gameObject.SetActive(false);
         }
     }
 
