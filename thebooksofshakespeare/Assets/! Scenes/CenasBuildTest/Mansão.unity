@@ -4368,7 +4368,7 @@ RectTransform:
   m_GameObject: {fileID: 347116807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1138, y: 2.1138, z: 2.1138}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 587316470}
@@ -4575,6 +4575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e48c1e32873fd441a7e0d88c8f3958f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestStart
+  sceneToLoad: "Mans\xE3o"
 --- !u!1001 &357267847
 PrefabInstance:
   m_ObjectHideFlags: 0
