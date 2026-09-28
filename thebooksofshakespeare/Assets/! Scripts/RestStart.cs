@@ -3,10 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class RestStart : MonoBehaviour
 {
-    public void StartGame()
+    [Header("Configuração de Cena")]
+    [SerializeField] private string sceneToLoad = "";
+
+    public void ResetGame()
     {
-        SceneManager.LoadScene("Mansão");
-        Cursor.lockState = CursorLockMode.Locked; 
-        Time.timeScale = 1f;
+        if (!string.IsNullOrEmpty(sceneToLoad))
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            SceneManager.LoadScene(sceneToLoad);
+        }
+
     }
 }
