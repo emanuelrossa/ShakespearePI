@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/! Scenes/CenasBuildTest/capitulo 4.unity
     guid: 27ca1fa9c71333445b8773f117c4e769
+  - enabled: 1
+    path: Assets/! Scenes/CenasBuildTest/capitulo 5.unity
+    guid: 3dc386974ca353743a332455e04565e8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

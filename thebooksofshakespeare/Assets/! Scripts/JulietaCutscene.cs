@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class JulietaCutscene : MonoBehaviour
 {
@@ -16,6 +15,16 @@ public class JulietaCutscene : MonoBehaviour
     public GameObject[] moradores;
     public Transform[] moradoresSpawnPoints;
 
+    [System.Serializable]
+    public struct DialogoLinha
+    {
+        public string nomeFalante;
+        [TextArea] public string fala;
+    }
+
+    [Header("Diálogos da Nova Cena (Múltiplos Falantes)")]
+    public DialogoLinha[] dialogoLinhas;
+
     private void Awake()
     {
         if (player == null)
@@ -24,6 +33,11 @@ public class JulietaCutscene : MonoBehaviour
         }
 
         SpawnAllCharacters();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(IniciarDialogoNovaCena());
     }
 
     public void SpawnAllCharacters()
@@ -54,6 +68,25 @@ public class JulietaCutscene : MonoBehaviour
                 {
                     moradores[i].transform.position = moradoresSpawnPoints[i].position;
                     moradores[i].transform.rotation = moradoresSpawnPoints[i].rotation;
+                }
+            }
+        }
+    }
+
+    private IEnumerator IniciarDialogoNovaCena()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (DialogueManager.Instance != null && dialogoLinhas.Length > 0)
+        {
+            foreach (var linha in dialogoLinhas)
+            {
+                string[] falaUnica = new string[] { linha.fala };
+                DialogueManager.Instance.StartDialogue(linha.nomeFalante, falaUnica, null);
+
+                while (DialogueManager.Instance.IsTalking)
+                {
+                    yield return null;
                 }
             }
         }
