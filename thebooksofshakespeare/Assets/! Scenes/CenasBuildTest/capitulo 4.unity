@@ -4417,6 +4417,7 @@ GameObject:
   - component: {fileID: 183934166}
   - component: {fileID: 183934165}
   - component: {fileID: 183934164}
+  - component: {fileID: 183934168}
   m_Layer: 5
   m_Name: CAnvas
   m_TagString: Untagged
@@ -4507,6 +4508,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &183934168
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183934163}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &187413629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21286,8 +21299,8 @@ MonoBehaviour:
   changeSceneAfterQuestDone: 1
   sceneToLoad: capitulo 5
   useFadeOnSceneChange: 1
-  fadeCanvasGroup: {fileID: 1578821932}
-  fadeDuration: 2
+  fadeCanvasGroup: {fileID: 183934168}
+  fadeDuration: 1.5
   givesQuest: 0
   questType: 0
   target: "Frei Louren\xE7o"
@@ -31862,14 +31875,13 @@ GameObject:
   - component: {fileID: 1578821931}
   - component: {fileID: 1578821934}
   - component: {fileID: 1578821933}
-  - component: {fileID: 1578821932}
   m_Layer: 5
   m_Name: BlackScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1578821931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31889,18 +31901,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &1578821932
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578821930}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &1578821933
 MonoBehaviour:
   m_ObjectHideFlags: 0
