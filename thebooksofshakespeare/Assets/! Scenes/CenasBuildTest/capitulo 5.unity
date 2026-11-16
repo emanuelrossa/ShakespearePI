@@ -20841,6 +20841,16 @@ MonoBehaviour:
     fala: "Ent\xE3o \xE9 assim que tudo vai acabar?"
   - nomeFalante: 'Shakespeare '
     fala: "Isso n\xE3o parece certo"
+  cenarioObjects: []
+  cavaleiros: []
+  dissolveDuration: 2
+  delayBetweenObjects: 0.3
+  delayBetweenCavaleiros: 1
+  dialogoAntesCenario: []
+  dialogoPorCavaleiro: []
+  dialogoFinal: []
+  nomeProximaCena: NomeDaProximaCena
+  delayAntesTrocaCena: 1.5
 --- !u!4 &1076406732
 Transform:
   m_ObjectHideFlags: 0
@@ -28380,6 +28390,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02938258, y: 0.19012162, z: 0.25192514}
   m_Center: {x: 0.003338937, y: 0.0783894, z: 0.020676631}
+--- !u!1 &1433043609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433043610}
+  m_Layer: 0
+  m_Name: SpawnMoradores (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1433043610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433043609}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.972217, z: -0, w: -0.23408166}
+  m_LocalPosition: {x: 1.89, y: 0, z: 310.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -207.075, z: 0}
 --- !u!1001 &1456390928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39785,3 +39826,4 @@ SceneRoots:
   - {fileID: 566685695}
   - {fileID: 1185252799}
   - {fileID: 1886804825}
+  - {fileID: 1433043610}
