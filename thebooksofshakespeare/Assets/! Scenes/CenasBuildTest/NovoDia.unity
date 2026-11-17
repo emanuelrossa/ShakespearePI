@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.026
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2577,9 +2577,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 3.34
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2614,7 +2614,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2629,7 +2629,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2644,7 +2644,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.765
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3497,7 +3497,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 324236dc577cd3e4487bb13549979e8d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4475,9 +4475,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 3.34
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4512,7 +4512,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4527,7 +4527,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4542,7 +4542,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.765
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9155,6 +9155,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -9202,6 +9206,22 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MaxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.888
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9468,9 +9488,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 3.34
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -9505,7 +9525,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9520,7 +9540,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9535,7 +9555,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.765
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9665,9 +9685,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 3.34
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -9702,7 +9722,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9717,7 +9737,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9732,7 +9752,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.765
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11529,7 +11549,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 324236dc577cd3e4487bb13549979e8d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -13749,7 +13769,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 324236dc577cd3e4487bb13549979e8d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -14807,6 +14827,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -14854,6 +14878,22 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.2611111
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14936,7 +14976,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 324236dc577cd3e4487bb13549979e8d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -15507,6 +15547,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -15554,6 +15598,18 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.57222223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15639,6 +15695,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -15686,6 +15746,18 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.57222223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16651,7 +16723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeobaldoEvent
   blackScreenOverlay: {fileID: 173093515}
   fightAudioSource: {fileID: 693421123}
-  proximaCena: 
+  proximaCena: capitulo 4
   npcSeguidor: {fileID: 65608208}
   playerTransform: {fileID: 1017045137}
   playerTeleportTarget: {fileID: 1295126245}
@@ -19711,6 +19783,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -19758,6 +19834,22 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.2611111
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.571
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23048,9 +23140,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 3.34
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -23085,7 +23177,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -23100,7 +23192,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53055555
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -23115,7 +23207,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.765
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -24513,7 +24605,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 324236dc577cd3e4487bb13549979e8d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 93ea72961edc4f64f915f64274494603, type: 2}
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -27053,6 +27145,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292304967786765502, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e8ae287f89d826047a94f2227ff89296, type: 2}
     - target: {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: player
       value: 
@@ -27100,6 +27196,22 @@ PrefabInstance:
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MaxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.888
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

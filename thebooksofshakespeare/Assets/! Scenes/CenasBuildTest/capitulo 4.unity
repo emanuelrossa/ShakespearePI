@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogMode: 2
+  m_FogDensity: 0.021
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -14520,12 +14520,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: Pan2D
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 04fdee6f5fcfe0d4e826865aa132e4ea, type: 3}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MaxDistance
-      value: 20
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MinDistance
@@ -14536,12 +14540,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.73888886
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.882
       objectReference: {fileID: 0}
     - target: {fileID: 4783978670262230142, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom (GuardPatrolEnemy)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783978670262230142, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5273657910071051972, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_LocalScale.x
@@ -14601,7 +14621,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Volume
-      value: 0.483
+      value: 0.246
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MaxDistance
+      value: 5.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MinDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
@@ -18724,6 +18756,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf43a815a27845c44815fd380bd298cc, type: 3}
   m_PrefabInstance: {fileID: 914458263}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &916836577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 2042595804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &916836578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 2042595804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &916836579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916836578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessVolume
+  sharedProfile: {fileID: 0}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &916836580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916836578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessLayer
+  volumeTrigger: {fileID: 916836577}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 3
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &916836581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916836578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c520d478f3d2445429bd7ac9c92b03a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessDebug
+  postProcessLayer: {fileID: 916836580}
+  lightMeter: 0
+  histogram: 0
+  waveform: 0
+  vectorscope: 0
+  debugOverlay: 0
 --- !u!1001 &920869827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38331,7 +38468,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 04fdee6f5fcfe0d4e826865aa132e4ea, type: 3}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MaxDistance
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: MinDistance
@@ -38339,11 +38476,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: rolloffMode
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218329890235387855, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.694
       objectReference: {fileID: 0}
     - target: {fileID: 4783978670262230142, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Name
@@ -38407,7 +38556,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
       propertyPath: m_Volume
-      value: 0.483
+      value: 0.278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MaxDistance
+      value: 5.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: MinDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074754204640644732, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3998852705941925325, guid: 4d5194b2c4ebf8648b3afc0206379381, type: 3}
@@ -39139,7 +39300,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486344066}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 916836581}
+    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 916836580}
+    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 916836579}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!114 &2042595805 stripped
 MonoBehaviour:
