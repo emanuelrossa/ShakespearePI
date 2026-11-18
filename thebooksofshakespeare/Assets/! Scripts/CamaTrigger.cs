@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class CamaTrigger : MonoBehaviour
 {
-    public JulietaCutscene cutscene;
+    // Agora ele puxa o script certo (ShakespeareCutscene)
+    public ShakespeareCutscene cutscene;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Se o jogador pisou na área
+        // Se o jogador (Shakespeare) pisar na área
         if (other.CompareTag("Player"))
         {
-            // Avista o script principal que o jogador chegou
-            cutscene.AvisarQueChegouNaCama();
+            if (cutscene != null)
+            {
+                cutscene.AvisarQueChegouNaCama();
+            }
+            else
+            {
+                Debug.LogWarning("Faltou arrastar o GameManager no campo 'Cutscene' do CamaTrigger!");
+            }
         }
     }
 }

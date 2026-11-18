@@ -288,6 +288,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483122510190623342, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.378052
+      objectReference: {fileID: 0}
     - target: {fileID: 1274276510007270199, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1379502
@@ -361,6 +365,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+--- !u!1 &174985160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7765270427372067285, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184315121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2471,6 +2480,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1551383117}
+    - targetCorrespondingSourceObject: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551383119}
   m_SourcePrefab: {fileID: 100100000, guid: 490db2b73591f6948880b26e5c839826, type: 3}
 --- !u!1 &1551383116 stripped
 GameObject:
@@ -2504,6 +2516,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4697c100c54c5ba4ea20da5e9f287c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+--- !u!114 &1551383119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551383116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac4db9e913ead44bb55f1b96f05c852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShakespeareCutscene
+  player: {fileID: 174985160}
+  playerSpawnPoint: {fileID: 0}
+  nomeDoPersonagem: Shakespeare
+  dialogoShakespeare: []
+  dialogoMissao: []
+  areaInteracaoCama: {fileID: 0}
+  dialogoInteracaoCama: []
+  telaPreta: {fileID: 0}
+  nomeProximaCena: 02. Quarto
+  duracaoFade: 2
 --- !u!1001 &1835141854
 PrefabInstance:
   m_ObjectHideFlags: 0
