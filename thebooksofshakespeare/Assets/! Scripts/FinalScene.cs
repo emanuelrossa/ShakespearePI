@@ -1,5 +1,6 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 
 public class FinalScene : MonoBehaviour
@@ -15,7 +16,6 @@ public class FinalScene : MonoBehaviour
     public DialogoLinha[] dialogoCreditos;
 
     [Header("Referências")]
-    [Tooltip("Arraste o objeto que tem o DialogueManager aqui.")]
     public DialogueManager dialogueManager;
 
     [Header("Efeito de Tela Preta")]
@@ -49,19 +49,17 @@ public class FinalScene : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        // 1. Toca o diálogo final
         yield return MostrarDialogo(dialogoCreditos);
 
-        // 2. Espera o DialogueManager terminar de fechar a caixinha dele
         yield return new WaitForSeconds(delayAposDialogo);
 
-        // --- SEGURANÇA EXTRA ---
-        // Se por algum motivo a caixa de diálogo ainda estiver ativa, desliga na força
         if (dialogueManager != null && dialogueManager.dialogueBox != null)
         {
             dialogueManager.dialogueBox.SetActive(false);
         }
-        // ------------------------
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         // 3. Fade para preto
         if (telaPreta != null)
@@ -77,20 +75,18 @@ public class FinalScene : MonoBehaviour
             }
         }
 
-        // 4. Ativa os créditos
         if (painelCreditos != null)
         {
             painelCreditos.SetActive(true);
 
             if (textoCreditosRect != null)
             {
-                // Força o RectTransform a ser independente e centralizado
                 textoCreditosRect.anchorMin = new Vector2(0.5f, 0.5f);
                 textoCreditosRect.anchorMax = new Vector2(0.5f, 0.5f);
                 textoCreditosRect.pivot = new Vector2(0.5f, 0.5f);
 
                 Vector2 posInicial = textoCreditosRect.anchoredPosition;
-                posInicial.y = -Screen.height - 200f; // Começa bem lá embaixo
+                posInicial.y = -Screen.height - 200f;
                 textoCreditosRect.anchoredPosition = posInicial;
 
                 while (textoCreditosRect.anchoredPosition.y < posicaoFinalCreditosY)
@@ -107,13 +103,11 @@ public class FinalScene : MonoBehaviour
     {
         if (linhas == null || linhas.Length == 0) yield break;
 
-        // Se o DialogueManager não foi arrastado no Inspector, tenta pegar pelo Singleton
         if (dialogueManager == null)
             dialogueManager = DialogueManager.Instance;
 
         if (dialogueManager == null)
         {
-            Debug.LogError("FinalScene: DialogueManager não encontrado!");
             yield break;
         }
 
@@ -121,7 +115,6 @@ public class FinalScene : MonoBehaviour
         {
             dialogueManager.StartDialogue(linha.nomeFalante, new string[] { linha.fala }, null);
 
-            // Espera o jogador passar a fala e o DialogueManager fechar a caixa
             while (dialogueManager.IsTalking)
             {
                 yield return null;
