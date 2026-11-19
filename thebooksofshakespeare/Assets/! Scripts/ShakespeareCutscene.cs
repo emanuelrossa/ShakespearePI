@@ -6,13 +6,9 @@ using UnityEngine.UI;
 public class ShakespeareCutscene : MonoBehaviour
 {
     [Header("Player (Shakespeare)")]
-    [Tooltip("Arraste o objeto do jogador aqui.")]
     public GameObject player;
-    [Tooltip("Onde o jogador vai nascer.")]
-    public Transform playerSpawnPoint;
 
     [Header("Configurações do Personagem")]
-    [Tooltip("Nome que vai aparecer na caixa de diálogo.")]
     public string nomeDoPersonagem = "Shakespeare";
 
     [System.Serializable]
@@ -22,50 +18,49 @@ public class ShakespeareCutscene : MonoBehaviour
     }
 
     [Header("Roteiro: Diálogos")]
-    [Tooltip("O que Shakespeare fala no início (pode ser pensamento ou falando sozinho).")]
     public DialogoLinha[] dialogoShakespeare;
-
-    [Tooltip("A missão que ele recebe.")]
     public DialogoLinha[] dialogoMissao;
-
-    [Header("Interação com a Cama")]
-    [Tooltip("Arraste o objeto que tem o BoxCollider (IsTrigger) da cama aqui.")]
-    public GameObject areaInteracaoCama;
-    [Tooltip("Fala que aparece quando o jogador chega perto da cama.")]
     public DialogoLinha[] dialogoInteracaoCama;
 
+    [Header("Integração com Missão")]
+    public string alvoMissao = "Cama";
+    public string textoMissao = "Vá para a cama";
+
+    [Header("Interação com a Cama (Por Distância)")]
+    [Tooltip("Arraste o objeto da cama aqui (só pra medir a distância).")]
+    public GameObject camaObjeto;
+    [Tooltip("Distância que o jogador precisa chegar pra poder apertar E.")]
+    public float distanciaInteracao = 4f;
+    [Tooltip("A tecla que vai deixar a tela preta e mudar de cena.")]
+    public KeyCode teclaInteracao = KeyCode.E;
+
+    [Header("UI de Aviso (Opcional)")]
+    [Tooltip("Um texto tipo 'Pressione E para dormir' que aparece quando chega perto.")]
+    public GameObject textoAvisoInteracao;
+
     [Header("Fade e Troca de Cena")]
-    [Tooltip("Uma Image de UI preta que cobre a tela. Comece com Alpha = 0.")]
     public Image telaPreta;
     public string nomeProximaCena = "02. Quarto";
     public float duracaoFade = 2f;
 
     private bool interagiuComCama = false;
+    private bool jaEstaNoFade = false;
+    private bool missaoAtiva = false;
 
     private void Awake()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        // Posiciona o Player/Shakespeare no ponto de spawn
-        if (player != null && playerSpawnPoint != null)
-        {
-            CharacterController cc = player.GetComponent<CharacterController>();
-            if (cc != null) cc.enabled = false;
-
-            player.transform.position = playerSpawnPoint.position;
-            player.transform.rotation = playerSpawnPoint.rotation;
-
-            if (cc != null) cc.enabled = true;
-        }
-
-        // Deixa a tela preta invisível no começo
         if (telaPreta != null)
         {
             Color c = telaPreta.color;
             c.a = 0f;
             telaPreta.color = c;
         }
+
+        if (textoAvisoInteracao != null)
+            textoAvisoInteracao.SetActive(false);
     }
 
     private void Start()
@@ -77,22 +72,25 @@ public class ShakespeareCutscene : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        // 1. Shakespeare (o player) fala sozinho / pensa
         yield return MostrarDialogo(dialogoShakespeare);
-
-        // 2. Recebe a missão
         yield return MostrarDialogo(dialogoMissao);
 
-        // 3. Espera o jogador (Shakespeare) ir até a cama e pisar no trigger
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.StartQuest(QuestManager.QuestType.Find, alvoMissao, "", textoMissao);
+        }
+
+        missaoAtiva = true;
+        Debug.Log("Missão Iniciada! Vá até a cama e aperte E.");
+
         yield return new WaitUntil(() => interagiuComCama);
 
-        // 4. Fala ao chegar na cama
-        yield return MostrarDialogo(dialogoInteracaoCama);
+        if (textoAvisoInteracao != null)
+            textoAvisoInteracao.SetActive(false);
 
-        // 5. Fade para preto
+        yield return MostrarDialogo(dialogoInteracaoCama);
         yield return FadeParaPreto();
 
-        // 6. Troca de cena
         yield return new WaitForSeconds(0.5f);
         if (!string.IsNullOrEmpty(nomeProximaCena))
         {
@@ -100,10 +98,52 @@ public class ShakespeareCutscene : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // Se já interagiu, tá no fade, ou a missão não começou, ignora
+        if (!missaoAtiva || interagiuComCama || jaEstaNoFade)
+            return;
+
+        // Se o jogador estiver dentro da área e apertar E
+        if (jogadorPerto && Input.GetKeyDown(teclaInteracao))
+        {
+            Debug.Log("Apertou E perto da cama! Iniciando transição...");
+            interagiuComCama = true;
+
+            if (QuestManager.Instance != null)
+                QuestManager.Instance.CompleteQuest();
+        }
+    }
+
+    private bool jogadorPerto = false;
+
+    // O Unity chama isso automaticamente quando ALGO entra no Trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jogadorPerto = true;
+            if (textoAvisoInteracao != null) textoAvisoInteracao.SetActive(true);
+            Debug.Log("Jogador chegou perto da cama!");
+        }
+    }
+
+    // O Unity chama isso quando ALGO sai do Trigger
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            jogadorPerto = false;
+            if (textoAvisoInteracao != null) textoAvisoInteracao.SetActive(false);
+            Debug.Log("Jogador saiu de perto da cama.");
+        }
+    }
+
     private IEnumerator FadeParaPreto()
     {
         if (telaPreta == null) yield break;
 
+        jaEstaNoFade = true;
         float t = 0;
         Color c = telaPreta.color;
         while (t < duracaoFade)
@@ -122,18 +162,11 @@ public class ShakespeareCutscene : MonoBehaviour
 
         foreach (var linha in linhas)
         {
-            // Puxa o nome direto da variável "nomeDoPersonagem" definida no Inspector
             DialogueManager.Instance.StartDialogue(nomeDoPersonagem, new string[] { linha.fala }, null);
             while (DialogueManager.Instance.IsTalking)
             {
                 yield return null;
             }
         }
-    }
-
-    // Método chamado pelo script da Cama (CamaTrigger)
-    public void AvisarQueChegouNaCama()
-    {
-        interagiuComCama = true;
     }
 }

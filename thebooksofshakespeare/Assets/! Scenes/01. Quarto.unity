@@ -119,167 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &18924102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 18924107}
-  - component: {fileID: 18924106}
-  - component: {fileID: 18924105}
-  - component: {fileID: 18924104}
-  - component: {fileID: 18924103}
-  m_Layer: 0
-  m_Name: cama
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &18924103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18924102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af455c964e3bd8a45a91923032e76500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  type: 0
-  id: cama
-  npcName: 
-  interactionIndicator: {fileID: 0}
-  dialogue:
-  - "(voc\xEA se deita e fecha os olhos...)"
-  questDoneDialogue: []
-  destroyWhen: 0
-  targetToDestroy: {fileID: 0}
-  changeSceneAfterQuestDone: 0
-  sceneToLoad: 
-  useFadeOnSceneChange: 0
-  fadeCanvasGroup: {fileID: 0}
-  fadeDuration: 1
-  givesQuest: 0
-  questType: 0
-  target: 
-  requiredItem: 
-  customQuestText: 
-  followScript: {fileID: 0}
-  isCompleted: 0
-  outline: {fileID: 0}
-  onInteractionFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScreenFader, Assembly-CSharp
-        m_MethodName: FadeToBlack
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!65 &18924104
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18924102}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &18924105
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18924102}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &18924106
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18924102}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &18924107
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18924102}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.712156, z: -0, w: 0.70202124}
-  m_LocalPosition: {x: 5.1588, y: 0.2172, z: -0.8937}
-  m_LocalScale: {x: 2.200226, y: 1, z: 4.01132}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90.821, z: 0}
 --- !u!1001 &174985159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -360,14 +199,53 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -21.314
       objectReference: {fileID: 0}
+    - target: {fileID: 7765270427372067285, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1782263425}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!1 &174985160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7765270427372067285, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &174985161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &174985162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &174985163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &176643291 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
   m_PrefabInstance: {fileID: 174985159}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184315121
@@ -1731,12 +1609,41 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.080296, y: 1.288999, z: 3.355355}
   m_Center: {x: 0.000000059604645, y: 0, z: 0}
+--- !u!114 &788289483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788289474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac4db9e913ead44bb55f1b96f05c852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShakespeareCutscene
+  player: {fileID: 174985160}
+  nomeDoPersonagem: Shakespeare
+  dialogoShakespeare:
+  - fala: '*bocejo*'
+  - fala: "Acho que j\xE1 est\xE1 um pouco tarde..."
+  - fala: Melhor eu ir deitar agora.
+  dialogoMissao: []
+  dialogoInteracaoCama: []
+  alvoMissao: Cama
+  textoMissao: "V\xE1 para a cama"
+  camaObjeto: {fileID: 788289474}
+  distanciaInteracao: 3
+  teclaInteracao: 101
+  textoAvisoInteracao: {fileID: 0}
+  telaPreta: {fileID: 1782263426}
+  nomeProximaCena: 02. Quarto
+  duracaoFade: 2
 --- !u!1 &855242993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8513859187771203891, guid: 50e100552e6d5e4489b9f5289ad3547c, type: 3}
@@ -2075,6 +1982,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 892b1ec21bd701a4cbc4125571f0e75e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 788289478}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 892b1ec21bd701a4cbc4125571f0e75e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 788289483}
   m_SourcePrefab: {fileID: 100100000, guid: 892b1ec21bd701a4cbc4125571f0e75e, type: 3}
 --- !u!1 &1360909320 stripped
 GameObject:
@@ -2401,15 +2311,15 @@ PrefabInstance:
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: nameText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985161}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: dialogueBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985163}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: dialogueText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985162}
     - target: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2480,9 +2390,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1551383117}
-    - targetCorrespondingSourceObject: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1551383119}
   m_SourcePrefab: {fileID: 100100000, guid: 490db2b73591f6948880b26e5c839826, type: 3}
 --- !u!1 &1551383116 stripped
 GameObject:
@@ -2516,28 +2423,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4697c100c54c5ba4ea20da5e9f287c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
---- !u!114 &1551383119
+--- !u!1 &1782263424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782263425}
+  - component: {fileID: 1782263427}
+  - component: {fileID: 1782263426}
+  m_Layer: 5
+  m_Name: BlackScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1782263425
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782263424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 176643291}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.00006485, y: -0.0015831}
+  m_SizeDelta: {x: 1920, y: 1080.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1782263426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551383116}
+  m_GameObject: {fileID: 1782263424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac4db9e913ead44bb55f1b96f05c852, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShakespeareCutscene
-  player: {fileID: 174985160}
-  playerSpawnPoint: {fileID: 0}
-  nomeDoPersonagem: Shakespeare
-  dialogoShakespeare: []
-  dialogoMissao: []
-  areaInteracaoCama: {fileID: 0}
-  dialogoInteracaoCama: []
-  telaPreta: {fileID: 0}
-  nomeProximaCena: 02. Quarto
-  duracaoFade: 2
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1782263427
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782263424}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1835141854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2926,7 +2886,6 @@ SceneRoots:
   - {fileID: 1887801574}
   - {fileID: 1438304408}
   - {fileID: 1551383115}
-  - {fileID: 18924107}
   - {fileID: 1460638139}
   - {fileID: 1350090744}
   - {fileID: 567941064}
