@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Collections.Generic;
+using System.Collections;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
-
-    string savePath;
+    private string savePath;
 
     void Awake()
     {
@@ -37,24 +37,29 @@ public class SaveManager : MonoBehaviour
             data.currentQuestId = GameState.Instance.currentQuestId;
         }
 
-        // acha TODOS os objetos com SaveableEntity na cena (player + npcs)
-        SaveableEntity[] entities = FindObjectsOfType<SaveableEntity>();
+        if (data.entities == null)
+            data.entities = new List<EntitySaveData>();
+
+        SaveableEntity[] entities = Object.FindObjectsByType<SaveableEntity>(FindObjectsSortMode.None);
         foreach (SaveableEntity entity in entities)
         {
-            data.entities.Add(entity.GetSaveData());
+            if (entity != null)
+            {
+                data.entities.Add(entity.GetSaveData());
+            }
         }
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
 
-        Debug.Log("Save feito com " + entities.Length + " entidades em: " + savePath);
+        Debug.Log("Save realizado com sucesso! Entidades salvas: " + entities.Length);
     }
 
     public void Load()
     {
         if (!File.Exists(savePath))
         {
-            Debug.LogWarning("Não existe save ainda.");
+            Debug.LogWarning("Ainda não existe nenhum arquivo de save.");
             return;
         }
 
@@ -63,26 +68,53 @@ public class SaveManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != data.currentScene)
         {
-            SceneManager.LoadScene(data.currentScene);
+            StartCoroutine(LoadSceneAndApply(data));
         }
-
-        StartCoroutine(ApplyLoadedData(data));
+        else
+        {
+            StartCoroutine(ApplyLoadedData(data));
+        }
     }
 
-    System.Collections.IEnumerator ApplyLoadedData(SaveData data)
+    IEnumerator LoadSceneAndApply(SaveData data)
     {
-        yield return null; // espera 1 frame a cena carregar
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(data.currentScene);
 
-        // monta um dicionário id -> dados pra achar rápido
-        Dictionary<string, EntitySaveData> lookup = new Dictionary<string, EntitySaveData>();
-        foreach (EntitySaveData e in data.entities)
-            lookup[e.id] = e;
-
-        SaveableEntity[] entities = FindObjectsOfType<SaveableEntity>();
-        foreach (SaveableEntity entity in entities)
+        while (!asyncLoad.isDone)
         {
-            if (lookup.ContainsKey(entity.id))
-                entity.LoadFromData(lookup[entity.id]);
+            yield return null;
+        }
+
+        yield return ApplyLoadedDataRoutine(data);
+    }
+
+    IEnumerator ApplyLoadedData(SaveData data)
+    {
+        yield return null;
+        yield return ApplyLoadedDataRoutine(data);
+    }
+
+    IEnumerator ApplyLoadedDataRoutine(SaveData data)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (data.entities != null)
+        {
+            Dictionary<string, EntitySaveData> lookup = new Dictionary<string, EntitySaveData>();
+            foreach (EntitySaveData e in data.entities)
+            {
+                if (e != null && !string.IsNullOrEmpty(e.id))
+                    lookup[e.id] = e;
+            }
+
+            SaveableEntity[] entities = Object.FindObjectsByType<SaveableEntity>(FindObjectsSortMode.None);
+            foreach (SaveableEntity entity in entities)
+            {
+                if (entity != null && lookup.ContainsKey(entity.id))
+                {
+                    entity.LoadFromData(lookup[entity.id]);
+                }
+            }
         }
 
         if (GameState.Instance != null)
@@ -91,6 +123,8 @@ public class SaveManager : MonoBehaviour
             GameState.Instance.questTriggered = data.questTriggered;
             GameState.Instance.currentQuestId = data.currentQuestId;
         }
+
+        Debug.Log("Dados do save aplicados com sucesso!");
     }
 
     public bool HasSave() => File.Exists(savePath);

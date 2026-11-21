@@ -63,6 +63,6 @@ public class Comecar : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene("Começo");
+        SceneManager.LoadScene("01. Quarto");
     }
 }

@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 using StarterAssets;
 using System.Collections;
@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         if (player == null)
         {
@@ -42,22 +43,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string npcName, string[] dialogue, NPC npc)
     {
-        // tenta de novo caso o Awake não tenha achado (ex: player desativado na hora do Load)
         if (player == null)
         {
             player = FindFirstObjectByType<FirstPersonController>(FindObjectsInactive.Include);
         }
-
-        if (player == null)
-        {
-            Debug.LogError("DialogueManager: não achou o FirstPersonController! Arrasta ele manualmente no campo Player do Inspector.");
-            return;
-        }
-
-       
-
-        if (IsTalking)
-            return;
 
         if (dialogue == null || dialogue.Length == 0)
             return;
@@ -69,13 +58,17 @@ public class DialogueManager : MonoBehaviour
         IsTalking = true;
         canAdvance = false;
 
-        dialogueBox.SetActive(true);
+        if (dialogueBox != null)
+            dialogueBox.SetActive(true);
 
-        nameText.text = npcName;
-        dialogueText.text = lines[0];
+        if (nameText != null)
+            nameText.text = npcName;
+
+        if (dialogueText != null)
+            dialogueText.text = lines[0];
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        Cursor.visible = true;
 
         StartCoroutine(InputDelay());
     }
@@ -88,10 +81,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (!IsTalking)
-            return;
-
-        if (!canAdvance)
+        if (!IsTalking || !canAdvance)
             return;
 
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
@@ -104,7 +94,8 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                dialogueText.text = lines[currentLine];
+                if (dialogueText != null)
+                    dialogueText.text = lines[currentLine];
             }
         }
     }
@@ -114,10 +105,13 @@ public class DialogueManager : MonoBehaviour
         IsTalking = false;
         canAdvance = false;
 
-        dialogueBox.SetActive(false);
+        if (dialogueBox != null)
+            dialogueBox.SetActive(false);
 
         if (player != null)
-            
+        {
+            player.enabled = true;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
