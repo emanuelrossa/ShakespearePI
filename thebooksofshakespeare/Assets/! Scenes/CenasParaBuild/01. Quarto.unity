@@ -359,6 +359,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
   m_PrefabInstance: {fileID: 174985159}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &174985164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1151806694198094890, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174985160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &174985165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &174985166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8020329466661699615, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &174985167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3681636008384600915, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184315121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2965,7 +2997,7 @@ PrefabInstance:
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985164}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: nameText
       value: 
@@ -3025,19 +3057,23 @@ PrefabInstance:
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985167}
+    - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
+      propertyPath: questText
+      value: 
+      objectReference: {fileID: 174985166}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questNotification
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1885395750}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questNotificationText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1885395749}
     - target: {fileID: 6503180104714544609, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: pauseMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174985165}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3229,6 +3265,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a89b13edc4632949b2bd37532bcf4d2, type: 3}
+--- !u!114 &1885395749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8025411968301923032, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1885395750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 635577173924626172, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1887801572
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,8 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class JulietaCutscene : MonoBehaviour
 {
@@ -46,9 +47,11 @@ public class JulietaCutscene : MonoBehaviour
     public DialogoLinha[] dialogoPorCavaleiro;
     public DialogoLinha[] dialogoFinal;
 
-    [Header("Troca de cena")]
+    [Header("Troca de Cena e Fade")]
     public string nomeProximaCena = "NomeDaProximaCena";
     public float delayAntesTrocaCena = 1.5f;
+    public CanvasGroup fadeCanvasGroup; 
+    public float duracaoFade = 1.5f;  
 
     private Dictionary<Renderer, Material> materiaisOriginais = new Dictionary<Renderer, Material>();
 
@@ -60,6 +63,12 @@ public class JulietaCutscene : MonoBehaviour
         }
 
         SpawnAllCharacters();
+
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.gameObject.SetActive(true);
+        }
     }
 
     private void Start()
@@ -141,6 +150,18 @@ public class JulietaCutscene : MonoBehaviour
         }
 
         yield return new WaitForSeconds(delayAntesTrocaCena);
+
+      
+        if (fadeCanvasGroup != null)
+        {
+            float t = 0f;
+            while (t < duracaoFade)
+            {
+                t += Time.deltaTime;
+                fadeCanvasGroup.alpha = Mathf.Clamp01(t / duracaoFade);
+                yield return null;
+            }
+        }
 
         if (!string.IsNullOrEmpty(nomeProximaCena))
         {

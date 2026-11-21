@@ -252,14 +252,22 @@ public class GuardPatrol : MonoBehaviour
         {
             gameOverCanvas.SetActive(true);
             Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
 
         if (player != null)
         {
             player.gameObject.SetActive(false);
         }
+
+        StartCoroutine(LiberarMouseRoutine());
+    }
+
+    IEnumerator LiberarMouseRoutine()
+    {
+        yield return null;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void MoveToNextWaypoint()

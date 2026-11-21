@@ -19,21 +19,13 @@ public class DialogueManager : MonoBehaviour
     private string[] lines;
     private int currentLine;
     private NPC currentNPC;
-
     private bool canAdvance;
 
     public bool IsTalking { get; private set; }
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         if (player == null)
         {
@@ -47,6 +39,15 @@ public class DialogueManager : MonoBehaviour
         {
             player = FindFirstObjectByType<FirstPersonController>(FindObjectsInactive.Include);
         }
+
+        if (player == null)
+        {
+            Debug.LogError("DialogueManager: Player não encontrado!");
+            return;
+        }
+
+        if (IsTalking)
+            return;
 
         if (dialogue == null || dialogue.Length == 0)
             return;
@@ -68,7 +69,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = lines[0];
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Cursor.visible = false;
 
         StartCoroutine(InputDelay());
     }
@@ -81,7 +82,10 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (!IsTalking || !canAdvance)
+        if (!IsTalking)
+            return;
+
+        if (!canAdvance)
             return;
 
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
