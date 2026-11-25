@@ -3601,7 +3601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318448675108442052, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: AmplitudeGain
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3318448675108442052, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: PivotOffset.z
