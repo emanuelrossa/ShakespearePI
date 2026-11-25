@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class JulietaCutscene : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player;
     public Transform playerSpawnPoint;
+
+    [Header("Configuração de Movimento")]
+    public bool congelarPlayerDuranteCutscene = true;
 
     [Header("Julieta")]
     public GameObject julieta;
@@ -27,43 +31,28 @@ public class JulietaCutscene : MonoBehaviour
     [Header("Diálogos da Nova Cena (Múltiplos Falantes)")]
     public DialogoLinha[] dialogoLinhas;
 
-    // =========================================================
-    //  DESAPARECIMENTO SEQUENCIAL
-    // =========================================================
-
     [Header("Cenário que vai sumir (primeiro)")]
-    [Tooltip("Arraste aqui todos os objetos do cenário que devem desaparecer primeiro.")]
     public GameObject[] cenarioObjects;
 
     [Header("Cavaleiros que somem um por vez (depois do cenário)")]
-    [Tooltip("Cada cavaleiro some individualmente, em ordem.")]
     public GameObject[] cavaleiros;
 
     [Header("Configurações do desaparecimento")]
-    [Tooltip("Duração do dissolve de CADA objeto (segundos).")]
     public float dissolveDuration = 2f;
-    [Tooltip("Tempo de espera entre um objeto e outro.")]
     public float delayBetweenObjects = 0.3f;
-    [Tooltip("Tempo de espera entre um cavaleiro e outro.")]
     public float delayBetweenCavaleiros = 1f;
 
     [Header("Diálogos por etapa")]
-    [Tooltip("Falas mostradas ANTES do cenário desaparecer.")]
     public DialogoLinha[] dialogoAntesCenario;
-
-    [Tooltip("Falas mostradas entre cada cavaleiro sumindo. Uma entrada por cavaleiro.")]
     public DialogoLinha[] dialogoPorCavaleiro;
-
-    [Tooltip("Falas mostradas no final, antes da troca de cena.")]
     public DialogoLinha[] dialogoFinal;
 
-    [Header("Troca de cena")]
-    [Tooltip("Nome exato da cena a carregar no final.")]
+    [Header("Troca de Cena e Fade")]
     public string nomeProximaCena = "NomeDaProximaCena";
-    [Tooltip("Atraso antes de trocar de cena (segundos).")]
     public float delayAntesTrocaCena = 1.5f;
+    public CanvasGroup fadeCanvasGroup; 
+    public float duracaoFade = 1.5f;  
 
-    // Cache dos materiais originais para restaurar (opcional)
     private Dictionary<Renderer, Material> materiaisOriginais = new Dictionary<Renderer, Material>();
 
     private void Awake()
@@ -74,6 +63,12 @@ public class JulietaCutscene : MonoBehaviour
         }
 
         SpawnAllCharacters();
+
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.gameObject.SetActive(true);
+        }
     }
 
     private void Start()
@@ -114,35 +109,30 @@ public class JulietaCutscene : MonoBehaviour
         }
     }
 
-    // =========================================================
-    //  ROTINA PRINCIPAL (ordem das etapas)
-    // =========================================================
-
     private IEnumerator RotinaCutsceneCompleta()
     {
+        if (congelarPlayerDuranteCutscene && player != null)
+        {
+            AlternarMovimentoPlayer(false);
+        }
+
         yield return new WaitForSeconds(0.5f);
 
-        // ---------- ETAPA 1: diálogo inicial (cena normal) ----------
         yield return MostrarDialogo(dialogoLinhas);
 
-        // ---------- ETAPA 2: diálogo ANTES do cenário sumir ----------
         yield return MostrarDialogo(dialogoAntesCenario);
 
-        // ---------- ETAPA 3: cenário inteiro desaparece ----------
         yield return DesaparecerGrupo(cenarioObjects, dissolveDuration, delayBetweenObjects);
 
-        // ---------- ETAPA 4: cada cavaleiro some um por vez, com fala entre eles ----------
         if (cavaleiros != null)
         {
             for (int i = 0; i < cavaleiros.Length; i++)
             {
-                // Fala ANTES do cavaleiro sumir
                 if (dialogoPorCavaleiro != null && i < dialogoPorCavaleiro.Length)
                 {
                     yield return MostrarDialogo(new DialogoLinha[] { dialogoPorCavaleiro[i] });
                 }
 
-                // Faz o cavaleiro sumir (pode esperar o dissolve acabar OU não)
                 if (cavaleiros[i] != null)
                 {
                     yield return DissolveObjeto(cavaleiros[i], dissolveDuration);
@@ -152,11 +142,26 @@ public class JulietaCutscene : MonoBehaviour
             }
         }
 
-        // ---------- ETAPA 5: diálogo final ----------
         yield return MostrarDialogo(dialogoFinal);
 
-        // ---------- ETAPA 6: troca de cena ----------
+        if (congelarPlayerDuranteCutscene && player != null)
+        {
+            AlternarMovimentoPlayer(true);
+        }
+
         yield return new WaitForSeconds(delayAntesTrocaCena);
+
+      
+        if (fadeCanvasGroup != null)
+        {
+            float t = 0f;
+            while (t < duracaoFade)
+            {
+                t += Time.deltaTime;
+                fadeCanvasGroup.alpha = Mathf.Clamp01(t / duracaoFade);
+                yield return null;
+            }
+        }
 
         if (!string.IsNullOrEmpty(nomeProximaCena))
         {
@@ -164,9 +169,17 @@ public class JulietaCutscene : MonoBehaviour
         }
     }
 
-    // =========================================================
-    //  HELPERS
-    // =========================================================
+    private void AlternarMovimentoPlayer(bool ativar)
+    {
+        MonoBehaviour[] scriptsPlayer = player.GetComponentsInChildren<MonoBehaviour>();
+        foreach (var script in scriptsPlayer)
+        {
+            if (script != this && (script.GetType().Name.Contains("Move") || script.GetType().Name.Contains("Look") || script.GetType().Name.Contains("Controller")))
+            {
+                script.enabled = ativar;
+            }
+        }
+    }
 
     private IEnumerator MostrarDialogo(DialogoLinha[] linhas)
     {
@@ -185,9 +198,6 @@ public class JulietaCutscene : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Faz todos os objetos do grupo desaparecerem, um após o outro (com leve sobreposição).
-    /// </summary>
     private IEnumerator DesaparecerGrupo(GameObject[] grupo, float duracao, float delay)
     {
         if (grupo == null) yield break;
@@ -196,19 +206,13 @@ public class JulietaCutscene : MonoBehaviour
         {
             if (grupo[i] == null) continue;
 
-            // Dispara o dissolve sem travar a fila (permite sobreposição)
             StartCoroutine(DissolveObjeto(grupo[i], duracao));
             yield return new WaitForSeconds(delay);
         }
 
-        // Aguarda o último dissolve terminar completamente
         yield return new WaitForSeconds(duracao);
     }
 
-    /// <summary>
-    /// Faz um único GameObject desaparecer suavemente via alpha do material.
-    /// Funciona com materiais em modo Transparent / Fade.
-    /// </summary>
     private IEnumerator DissolveObjeto(GameObject obj, float duracao)
     {
         if (obj == null) yield break;
@@ -216,13 +220,11 @@ public class JulietaCutscene : MonoBehaviour
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>(true);
         if (renderers.Length == 0)
         {
-            // Sem renderer ? só desativa no final
             yield return new WaitForSeconds(duracao);
             obj.SetActive(false);
             yield break;
         }
 
-        // Prepara materiais (garante modo Transparent e alpha 1)
         foreach (var r in renderers)
         {
             foreach (var mat in r.materials)
@@ -258,11 +260,9 @@ public class JulietaCutscene : MonoBehaviour
 
     private void ConfigurarMaterialTransparente(Material mat)
     {
-        // Tenta configurar o material para modo Transparent (funciona com Standard/URP Lit)
         if (mat.HasProperty("_Mode"))
         {
-            // Built-in Standard Shader
-            mat.SetFloat("_Mode", 3); // Transparent
+            mat.SetFloat("_Mode", 3);
             mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
             mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             mat.SetInt("_ZWrite", 0);
@@ -273,9 +273,8 @@ public class JulietaCutscene : MonoBehaviour
         }
         else if (mat.HasProperty("_Surface"))
         {
-            // URP Lit / Unlit
-            mat.SetFloat("_Surface", 1); // Transparent
-            mat.SetFloat("_Blend", 0);   // Alpha
+            mat.SetFloat("_Surface", 1);
+            mat.SetFloat("_Blend", 0);
             mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
             mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             mat.SetInt("_ZWrite", 0);

@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/! Scenes/CenasParaBuild/TitleScene.unity
     guid: 9b19a545961ee764f938abceefafbd77
   - enabled: 1
+    path: Assets/! Scenes/CenasParaBuild/01. Quarto.unity
+    guid: 3f313970304e364468dc7409f479bae1
+  - enabled: 1
+    path: Assets/! Scenes/CenasParaBuild/02. Quarto.unity
+    guid: 78e7db6a597815c4595dee31b4e719ca
+  - enabled: 1
     path: "Assets/! Scenes/CenasParaBuild/Come\xE7o.unity"
     guid: 2f77cedc15966bf42a13a74c345d73df
   - enabled: 1
@@ -29,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/! Scenes/CenasParaBuild/capitulo 5.unity
     guid: 3dc386974ca353743a332455e04565e8
+  - enabled: 1
+    path: Assets/! Scenes/CenasParaBuild/final.unity
+    guid: 3dd721af8261a03408d49e61f85c74b3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -197,111 +197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55764346}
   m_CullTransparentMesh: 1
---- !u!1 &81187432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
-  m_PrefabInstance: {fileID: 840117944}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &81187433 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
-  m_PrefabInstance: {fileID: 840117944}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &81187438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81187432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessVolume
-  sharedProfile: {fileID: 0}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!114 &81187439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81187432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessLayer
-  volumeTrigger: {fileID: 81187433}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 3
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.768
-    motionBlending: 0.757
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
---- !u!114 &81187440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81187432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c520d478f3d2445429bd7ac9c92b03a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.PostProcessDebug
-  postProcessLayer: {fileID: 81187439}
-  lightMeter: 0
-  histogram: 0
-  waveform: 0
-  vectorscope: 0
-  debugOverlay: 0
 --- !u!1 &96774694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1039,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233165441}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &280783418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8025411968301923032, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &284942564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1413,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289036624}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &328775820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347116807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,6 +2026,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423656570}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &434611563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1151806694198094890, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &499703457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +2892,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestStart
   sceneToLoad: capitulo 4
+--- !u!114 &631378194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &638307343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,19 +3136,19 @@ PrefabInstance:
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 434611563}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: nameText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 815684513}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: dialogueBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 328775820}
     - target: {fileID: 1528373283828034301, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: dialogueText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 631378194}
     - target: {fileID: 2320332184180883861, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -3263,18 +3196,18 @@ PrefabInstance:
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questBox
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2029247490}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1441678584}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: currentTarget
-      value: 
+      value: Julieta
       objectReference: {fileID: 0}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: currentQuestType
@@ -3283,15 +3216,15 @@ PrefabInstance:
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questNotification
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 882498162}
     - target: {fileID: 5889874139250612832, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: questNotificationText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 280783418}
     - target: {fileID: 6503180104714544609, guid: 490db2b73591f6948880b26e5c839826, type: 3}
       propertyPath: pauseMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 862068780}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3408,6 +3341,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761007507}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &815684513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &837498799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,6 +3475,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 12.378052
       objectReference: {fileID: 0}
+    - target: {fileID: 635577173924626172, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1151806694198094890, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: Gravity
       value: -15
@@ -3599,6 +3547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_text
       value: Continuar
@@ -3615,13 +3567,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -23.948788
       objectReference: {fileID: 0}
+    - target: {fileID: 3681636008384600915, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4218362929550126368, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: distance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4273491853535933040, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4893898419256423271, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_Name
       value: PlayerKit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.161317
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.948788
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5661220478190802221, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: field of view
@@ -3683,6 +3663,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Sair
       objectReference: {fileID: 0}
+    - target: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -3729,15 +3713,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1101424647}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 635577173924626172, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 81187440}
-    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      addedObject: {fileID: 882498166}
+    - targetCorrespondingSourceObject: {fileID: 3681636008384600915, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 81187439}
-    - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 81187438}
+      addedObject: {fileID: 2029247494}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!4 &840117945 stripped
 Transform:
@@ -3776,6 +3757,28 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e1a29d24f420ca94592769d1da5e65a1, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &862068780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1336765865051702170, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &882498162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 635577173924626172, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &882498166
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882498162}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &895519926
 GameObject:
   m_ObjectHideFlags: 0
@@ -5867,7 +5870,7 @@ Transform:
   m_GameObject: {fileID: 1360761054}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49978513, y: -0.50606126, z: -0.50014144, w: 0.49393877}
-  m_LocalPosition: {x: 12.435, y: 0.184, z: -12.179}
+  m_LocalPosition: {x: 12.4344, y: 0.1342, z: -12.179}
   m_LocalScale: {x: 0.6530836, y: 0.17207, z: 0.4799733}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6297,6 +6300,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415787536}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1441678584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8020329466661699615, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1534563590
 GameObject:
   m_ObjectHideFlags: 0
@@ -8228,7 +8242,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f0cc6e767673f874294d7f13a68bfb45, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2005952551}
+      addedObject: {fileID: 2005952557}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f0cc6e767673f874294d7f13a68bfb45, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2005952550}
@@ -8259,44 +8273,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &2005952551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005952549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af455c964e3bd8a45a91923032e76500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  type: 0
-  id: Julieta
-  npcName: Julieta
-  interactionIndicator: {fileID: 164412725}
-  dialogue:
-  - 'Julieta: Obrigada.'
-  - "Julieta: Diga a Romeu que quero encontr\xE1-lo novamente."
-  questDoneDialogue: []
-  destroyWhen: 0
-  targetToDestroy: {fileID: 0}
-  changeSceneAfterQuestDone: 0
-  sceneToLoad: 
-  useFadeOnSceneChange: 0
-  fadeCanvasGroup: {fileID: 0}
-  fadeDuration: 1
-  givesQuest: 0
-  questType: 0
-  target: Romeu
-  requiredItem: 
-  customQuestText: 
-  followScript: {fileID: 0}
-  isCompleted: 0
-  outline: {fileID: 2005952550}
-  onInteractionFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &2005952554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8318,6 +8294,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 66.86035, y: 191.5784, z: 54.270653}
   m_Center: {x: 2.2442837, y: 94.899025, z: 2.0562205}
+--- !u!114 &2005952557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005952549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af455c964e3bd8a45a91923032e76500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPC
+  type: 0
+  id: Julieta
+  npcName: Julieta
+  interactionIndicator: {fileID: 164412725}
+  dialogue:
+  - Muito Obrigada!
+  questDoneDialogue: []
+  destroyWhen: 0
+  targetToDestroy: {fileID: 0}
+  changeSceneAfterQuestDone: 0
+  sceneToLoad: 
+  useFadeOnSceneChange: 0
+  fadeCanvasGroup: {fileID: 0}
+  fadeDuration: 1
+  givesQuest: 1
+  questType: 1
+  target: Romeu
+  requiredItem: 
+  customQuestText: 
+  followScript: {fileID: 0}
+  isCompleted: 0
+  outline: {fileID: 2005952550}
+  onInteractionFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2006225506
 GameObject:
   m_ObjectHideFlags: 0
@@ -8540,6 +8553,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018150002}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2029247490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3681636008384600915, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 840117944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2029247494
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029247490}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2030387894
 GameObject:
   m_ObjectHideFlags: 0
