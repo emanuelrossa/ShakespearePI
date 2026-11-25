@@ -4,7 +4,7 @@ using TMPro;
 
 public class TextoFade : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI texto;
+    [SerializeField] private TMP_Text texto;
 
     [Header("Tempos (segundos)")]
     [SerializeField] private float duracaoFadeIn = 2f;
@@ -14,7 +14,7 @@ public class TextoFade : MonoBehaviour
     private void Start()
     {
         if (texto == null)
-            texto = GetComponent<TextMeshProUGUI>();
+            texto = GetComponent<TMP_Text>();
 
         SetAlpha(0f);
         StartCoroutine(Sequencia());
