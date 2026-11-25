@@ -170,6 +170,8 @@ MonoBehaviour:
   dialogoFinal: []
   nomeProximaCena: 
   delayAntesTrocaCena: 0
+  fadeCanvasGroup: {fileID: 0}
+  duracaoFade: 1.5
 --- !u!4 &119113316
 Transform:
   m_ObjectHideFlags: 0
@@ -249,6 +251,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_text
+      value: Aperte ESC para continuar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -127345874392970623, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3236240816476221476, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -305,6 +323,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -21.314
       objectReference: {fileID: 0}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_text
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -127345874392970623, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6879288221081607414, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -313,19 +347,52 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -54.753304
       objectReference: {fileID: 0}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 16fb78723fdfb5e44b72d3ab8c99d23c, type: 2}
+    - target: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7765270427372067285, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1483903205}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SairDoGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuitGame, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8566897850686690859, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+    - {fileID: 0}
+    - {fileID: 1251428899408901548, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+    - {fileID: 8104923123493277615, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5863181384675463531, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 727287819}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1483903205}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!1 &174985160 stripped
 GameObject:
@@ -2981,6 +3048,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bb7151bd5e37fd469a2888be8c4702e, type: 3}
+--- !u!1 &1483903197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 174985159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1483903205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483903197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e41e02a28c9b748976b77183977194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
 --- !u!224 &1486035797 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
@@ -3102,9 +3186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75098f89a95d16d4ba06d732bad0718c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  introMonologueDone: 0
-  questTriggered: 0
-  currentQuestId: 
 --- !u!114 &1551383118
 MonoBehaviour:
   m_ObjectHideFlags: 0

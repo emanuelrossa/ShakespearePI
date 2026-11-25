@@ -7427,12 +7427,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_text
-      value: Continuar
+      value: Aperte ESC para continuar
       objectReference: {fileID: 0}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 16fb78723fdfb5e44b72d3ab8c99d23c, type: 2}
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
@@ -7465,6 +7465,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -32.39001
       objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661220478190802218, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6001340069648419653, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.31
@@ -7479,12 +7487,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_text
-      value: Sair
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 16fb78723fdfb5e44b72d3ab8c99d23c, type: 2}
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1

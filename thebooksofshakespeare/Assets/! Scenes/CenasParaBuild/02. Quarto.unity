@@ -2406,6 +2406,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_text
+      value: Aperte ESC para continuar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3318448674493496836, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2502,6 +2514,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 184.506
       objectReference: {fileID: 0}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_text
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1728109251}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SairDoGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuitGame, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9118189902019366484, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: intervaloPasso
       value: 0.4
@@ -2510,7 +2546,9 @@ PrefabInstance:
       propertyPath: 'somPassos.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: ddd9e964709e2eb41b7aaf263c840721, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1251428899408901548, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+    - {fileID: 8104923123493277615, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5863181384675463531, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
     m_AddedGameObjects:
@@ -2524,7 +2562,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5661220478190802223, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 972832205}
+    - targetCorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728109251}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+--- !u!1 &1728109250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 1728109249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728109251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728109250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e41e02a28c9b748976b77183977194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
 --- !u!1001 &1777622952
 PrefabInstance:
   m_ObjectHideFlags: 0

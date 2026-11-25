@@ -36983,6 +36983,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf43a815a27845c44815fd380bd298cc, type: 3}
   m_PrefabInstance: {fileID: 1966711350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1967820716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+  m_PrefabInstance: {fileID: 2042595804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1967820717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967820716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e41e02a28c9b748976b77183977194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitGame
 --- !u!1001 &1968960998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38056,12 +38073,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_text
-      value: Continuar
+      value: Aperte ESC para continuar
       objectReference: {fileID: 0}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 16fb78723fdfb5e44b72d3ab8c99d23c, type: 2}
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
     - target: {fileID: 1467484321046076102, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
@@ -38148,12 +38165,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_text
-      value: Sair
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 16fb78723fdfb5e44b72d3ab8c99d23c, type: 2}
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
     - target: {fileID: 6661919936464149268, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
@@ -38205,7 +38222,7 @@ PrefabInstance:
     - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1486344067}
+      objectReference: {fileID: 1967820717}
     - target: {fileID: 8002465134770554540, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SairDoGame
@@ -38230,7 +38247,9 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1251428899408901548, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+    - {fileID: 8104923123493277615, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
@@ -38242,7 +38261,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6660603434863756909, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486344066}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 314092746176750883, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1967820717}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
 --- !u!114 &2042595805 stripped
 MonoBehaviour:
