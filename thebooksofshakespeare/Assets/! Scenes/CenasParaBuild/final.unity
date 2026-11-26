@@ -1601,7 +1601,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n                            FIM\n\n\n\n\n\n\n\nCREDITOS:\n\nGUSTAVO
+  m_text: "\nToda historia tem um autor. Mas sera que \ntodo autor conhece sua propria
+    historia?\n\n\n                            FIM\n\n\n\n\n\n\n\nCREDITOS:\n\nGUSTAVO
     PEREIRA ABREU\n\nEMANUEL ROSSA\n\nMARIA EDUARDA RAULINO HEINEMANN\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
@@ -1862,6 +1863,30 @@ PrefabInstance:
     - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_margin.z
       value: -105.84147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -127345874392970623, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 6931049895909466876, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -127345874392970623, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 7190364567414974086, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7433104322795157173, guid: 1aa8bbbfe047f4840812a916385b51c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2905,9 +2930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75098f89a95d16d4ba06d732bad0718c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  introMonologueDone: 0
-  questTriggered: 0
-  currentQuestId: 
 --- !u!114 &1551383118
 MonoBehaviour:
   m_ObjectHideFlags: 0

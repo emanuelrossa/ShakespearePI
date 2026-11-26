@@ -26416,6 +26416,10 @@ PrefabInstance:
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 830f69cd5c7ee7648a7ef750a529af99, type: 2}
+    - target: {fileID: 7942488348462918076, guid: cae016382de0c36479a3752ae2599640, type: 3}
+      propertyPath: JumpHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8471274838318988446, guid: cae016382de0c36479a3752ae2599640, type: 3}
       propertyPath: m_text
       value: Menu
